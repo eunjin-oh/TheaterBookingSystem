@@ -17,7 +17,7 @@ public class LogonDBBean {
 		
 		String jdbcUrl = "jdbc:mysql://localhost:3306/termp";
 		String dbId = "root";
-		String dbPass = "admin";
+		String dbPass = "euncha315^^";
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);

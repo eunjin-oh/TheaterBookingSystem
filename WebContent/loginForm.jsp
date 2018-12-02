@@ -1,18 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+ <%@ page import="java.sql.*" %>
+ <%  request.setCharacterEncoding("UTF-8");  %>
 <html>
-<head>
-<title>·Î±×ÀÎ</title>
+   <head>
+   <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+ 	<script src="script.js" type="text/javascript"></script>
+<style rel="stylesheet">
+body {
+   font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+   color: #333333;
+   background: #596778;
+}
+</style>
 </head>
 <body>
-	<h2>·Î±×ÀÎÆû</h2>
-	
-	<form method = "post" action="cookieLoginPro.jsp">
-      	¾ÆÀÌµğ : <input type="text" name = "id" maxlength = "12"><br/>
-      	ÆĞ½º¿öµå : <input type="password" name = "passwd" maxlength="12"><br/>
-   		<input type="submit" value="·Î±×ÀÎ">
-   		<input type="button" value="È¸¿ø°¡ÀÔ" onclick="location.href='insertMemberForm.jsp'">
+<form class="signUp" id="signupForm" method = "post" action="cookieLoginPro.jsp">
+   <h1 class="signUpTitle">ì˜í™” ì˜ˆì•½ ì‹œìŠ¤í…œ</h1>
+      <input type="text" class="signUpInput" name = "id" placeholder="ì•„ì´ë””" autofocus required maxlength = "12">
+      	<input type="password" class="signUpInput" name = "passwd" maxlength="12" placeholder="ë¹„ë°€ë²ˆí˜¸" required>
+      	 íšŒì›<input type="radio" name="login" value="cus" value="cus">
+   		ê´€ë¦¬ì<input type="radio" name="login"  value="man" value="man">
+   		  <input type="submit" value="ë¡œê·¸ì¸" class="signUpButton">
+   <a href="#" class="button" type="submit" onclick="move('JoinForm.jsp');"/>íšŒì›ê°€ì…</a>
 	</form>
 </body>
 </html>
