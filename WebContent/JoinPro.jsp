@@ -16,7 +16,7 @@
     String str = "";
     
     try{
-       String jdbcUrl = "jdbc:mysql://localhost:3306/termp?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false";
+       String jdbcUrl = "jdbc:mysql://localhost:3306/termp?useUnicode=true&characterEncoding=UTF-8";
        String dbId = "root";
        String dbPass = "admin";
        
