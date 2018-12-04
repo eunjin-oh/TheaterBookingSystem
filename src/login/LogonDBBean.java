@@ -15,9 +15,9 @@ public class LogonDBBean {
 	private Connection getConnection() throws Exception{
 		Connection conn = null;
 		
-		String jdbcUrl = "jdbc:mysql://localhost:3306/termp";
+		String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
 		String dbId = "root";
-		String dbPass = "euncha315^^";
+		String dbPass = "admin";
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
@@ -32,7 +32,7 @@ public class LogonDBBean {
 			conn = getConnection();
 			
 			pstmt = conn.prepareStatement(
-					"insert into customer values (?, ?, ?, ?, ?, ?)");
+					"insert into 회원 values (?, ?, ?, ?, ?, ?)");
 			pstmt.setString(1, customer.getId());
 			pstmt.setString(2, customer.getPasswd());
 			pstmt.setString(3, customer.getName());
@@ -57,12 +57,12 @@ public class LogonDBBean {
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(
-					"select passwd from customer where id = ?");
+					"select 회원비밀번호 from 회원 where 회원아이디 = ?");
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				dbpasswd = rs.getString("passwd");
+				dbpasswd = rs.getString("회원비밀번호");
 				if(dbpasswd.equals(passwd))
 					x = 1; // 인증 성공
 				else

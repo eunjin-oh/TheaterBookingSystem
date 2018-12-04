@@ -1,11 +1,9 @@
 package login;
-//import java.sql.Timestamp;
 
 public class LogonDataBean {
 	private String id;
 	private String passwd;
 	private String name;
-	//private Timestamp reg_date;
 	private String birth;
 	private String address;
 	private int phone;
@@ -28,14 +26,6 @@ public class LogonDataBean {
 	public void setName(String name) {
 		this.name = name;
 	}
-	/*
-	public Timestamp getReg_date() {
-		return reg_date;
-	}
-	public void setReg_date(Timestamp reg_date) {
-		this.reg_date = reg_date;
-	}
-	*/
 	public String getBirth() {
 		return birth;
 	}
