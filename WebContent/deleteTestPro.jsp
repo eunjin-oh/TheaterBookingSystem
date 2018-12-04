@@ -14,23 +14,23 @@
 	ResultSet rs = null;
 		
 	try{
-		String jdbcUrl = "jdbc:mysql://localhost:3306/termp?useUnicode=true&characterEncoding=UTF-8";
+		String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
 		String dbId = "root";
 		String dbPass = "admin";
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
-		String sql = "select id, passwd from customer where id=?";
+		String sql = "select 회원아이디, 회원비밀번호 from 회원 where 회원아이디=?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1,id);
 		rs = pstmt.executeQuery();
 		
 		// 레코드의 검색 결과로 작업 처리
 		if(rs.next()){ //기존에 아이디가 존재하는 경우 수행
-			String rId = rs.getString("id");
-			String rPasswd = rs.getString("passwd");
+			String rId = rs.getString("회원아이디");
+			String rPasswd = rs.getString("회원비밀번호");
 			if(id.equals(rId) && passwd.equals(rPasswd)){// 패스워드가 일치하는 경우 수행
-				sql = "delete from customer where id = ?";
+				sql = "delete from 회원 where 회원아이디 = ?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, id);
 				pstmt.executeUpdate();

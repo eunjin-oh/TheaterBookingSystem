@@ -15,15 +15,15 @@
     String str = "";
     
     try{
-    	String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
+    	String jdbcUrl = "jdbc:mysql://localhost:3306/termp?useUnicode=true&characterEncoding=UTF-8";
        String dbId = "root";
-       String dbPass = "admin";
+       String dbPass = "euncha315^^";
        
        
        Class.forName("com.mysql.jdbc.Driver");
        conn = DriverManager.getConnection(jdbcUrl,dbId,dbPass);
        
-       String sql = "insert into 회원 values(?,?,?,?,?,?,?)";
+       String sql = "insert into customer values(?,?,?,?,?,?,?)";
        pstmt = conn.prepareStatement(sql);
        
        pstmt.setString(1,id);
@@ -35,10 +35,10 @@
        pstmt.setInt(7,0);
        pstmt.executeUpdate();     
        
-       str = "회원 테이블에 새로운 레코드를 추가했습니다.";
+       str = "member 테이블에 새로운 레코드를 추가했습니다.";
     }catch(Exception e) {
        e.printStackTrace();
-       str = "회원 테이블에 새로운 레코드를 추가에 실패했습니다.";
+       str = "member 테이블에 새로운 레코드를 추가에 실패했습니다.";
     }finally {
        if(pstmt != null) try{pstmt.close();}catch(SQLException sqle){}
        if(conn != null) try{conn.close();}catch(SQLException sqle){}
