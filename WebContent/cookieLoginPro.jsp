@@ -16,7 +16,7 @@
 		Cookie cookie = new Cookie("id", id);
 		cookie.setMaxAge(20*60);
 		response.addCookie(cookie);
-		%>	<form action="<%=type%>Main.jsp" id="moveId"><input type="hidden" name="stuNum" value="<%=id%>"></form>
+		%>	<form action="<%=type%>Main.jsp" id="moveId"><input type="hidden" name="id" value="<%=id%>"></form>
 		<script>
 			moveId.submit();
 		</script>
