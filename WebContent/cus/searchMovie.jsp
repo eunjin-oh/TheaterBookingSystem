@@ -2,25 +2,7 @@
     pageEncoding="UTF-8"%>
  <%@ page import="java.sql.*" %>
  <%  request.setCharacterEncoding("UTF-8");  %>
-    
-<%
-	String id = "";
-	try{
-		Cookie[] cookies = request.getCookies();
-		if(cookies != null){
-			for(int i=0;i<cookies.length;++i){
-				if(cookies[i].getName().equals("id")){
-					id = cookies[i].getValue();
-				}
-			}
-			if(id.equals("")){
-				response.sendRedirect("loginForm.jsp");
-			}
-		}else{
-			response.sendRedirect("loginForm.jsp");
-		}
-	}catch(Exception e){}
-%>
+   
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -28,6 +10,7 @@
   	<link rel="stylesheet" type="text/css" href="../style.css">
   	<script src="../script.js" type="text/javascript"></script>
   </head>
+  <% String id = request.getParameter("id"); %>
   <body>
     <header id="header">
       <div class="navbar">
@@ -60,7 +43,7 @@
    		</div>
     </header>
 	<b><%=id %></b>님이 로그인 하셨습니다.
-	<form method="post" action="cookieLogout.jsp">
+	<form method="post" action="../cookieLogout.jsp">
 		<input type="submit" value="로그아웃">
 	</form>
 </body>
