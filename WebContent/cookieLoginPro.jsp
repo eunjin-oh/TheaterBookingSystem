@@ -31,6 +31,7 @@
 	<script>
 		alert("비밀번호가 맞지 않습니다.");
 		history.go(-1);
+	</script>
 <%  }else{%>
 	<script>
 		alert("아이디가 맞지 않습니다.");

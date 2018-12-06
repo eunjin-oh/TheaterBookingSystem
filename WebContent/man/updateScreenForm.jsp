@@ -16,6 +16,7 @@
 <% 
 	String id = request.getParameter("id");
 	String screenid = request.getParameter("screenid");
+	//String theatername = request.getParameter("theatername");
 %>
 <body>
 <header id="header">
@@ -48,13 +49,20 @@
             <a href="ScreenReg.jsp?id=<%=id%>">상영관 등록</a>
           </div>
    		</div>
-         <div class="dropdown">
+          <div class="dropdown">
           <button class="dropbtn">고객관리
             <i class="fa fa-caret-down"></i>
           </button>
            <div class="dropdown-content">
-           	<a href="Customerinfo.jsp?id=<%=id%>">회원정보</a>
             <a href="MemInfo.jsp?id=<%=id%>">VIP정보</a>
+            </div>       
+            </div>
+          <div class="dropdown">
+          <button class="dropbtn">티켓
+            <i class="fa fa-caret-down"></i>
+          </button>
+           <div class="dropdown-content">
+            <a href="ticketIssue.jsp?id=<%=id%>">티켓발행</a>
             </div>       
             </div>
     </header>
