@@ -26,7 +26,7 @@
           </button>
           <div class="dropdown-content">
             <a href="CinemaInfo.jsp?id=<%=id%>">영화관 정보</a>
-              <a href="CinemaReg.jsp?id=<%=id%>">영화관 등록</a>
+            <a href="CinemaReg.jsp?id=<%=id%>">영화관 등록</a>
           </div>
         </div>
         <div class="dropdown">
@@ -60,5 +60,49 @@
 	<form method="post" action="../cookieLogout.jsp">
 		<input type="submit" value="로그아웃">
 	</form>
+	
+	<div id="wrap">
+        <br><br>
+        <b><font size="6" color="gray">영화관추가</font></b>
+        <br><br><br>
+        
+        <form method="post" action="CinemaRegPro.jsp" class="formCenter">
+            <table>
+                <tr>
+                    <td id="title">영화관이름</td>
+                    <td>
+                        <input type="text" name="theatername" maxlength="10">    
+                    </td>
+                </tr>                      
+                <tr>
+                    <td id="title">영화관주소</td>
+                    <td>
+                        <input type="text" name="theateraddress" maxlength="100">
+                    </td>
+                </tr>   
+                <tr>
+                    <td id="title">영화관전화번호</td>
+                    <td>
+                        <input type="text" name="theaterphone" maxlength="12">
+                    </td>
+                </tr>                  
+                <tr>
+                    <td id="title">상영관 수</td>
+                    <td>                
+                        <input type="text" name="screennumber" maxlength="10">                     
+                    </td>
+                </tr>
+                <tr>
+                    <td id="title">총 좌석수</td>
+                    <td>
+                        <input type="text" name="seatnumber" maxlength="10">
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <input type="submit" value="등록"/>  <input type="reset" value="취소">
+        </form>
+    </div>
+    
 </body>
 </html>

@@ -6,33 +6,7 @@
 <html>
 <head>
     <title>회원가입 화면</title> 
-    <style>
-        #wrap{
-            width:530px;
-            margin-left:auto; 
-            margin-right:auto;
-            text-align:center;
-        }
-        
-        table{
-            border:3px solid skyblue
-        }
-        
-        td{
-            border:1px solid skyblue
-        }
-        
-        #title{
-            background-color:skyblue
-      	}
-       .formCenter{
-			position:absolute;
-			top:50%;
-			left:50%;
-		 	transform:translate(-50%, -50%);		  
-		}
 
-    </style>
 </head>
 <body>
 
@@ -41,7 +15,7 @@
         <b><font size="6" color="gray" >영화추가</font></b>
         <br><br><br>
         
-        <form method="post" action="addMoviePro.jsp" class="formCenter">
+        <form method="post" action="addMoviePro.jsp" class="formCenter" >
             <table>
                 <tr>
                     <td id="title">영화번호</td>

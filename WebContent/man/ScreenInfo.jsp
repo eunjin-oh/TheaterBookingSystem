@@ -26,7 +26,7 @@
           </button>
           <div class="dropdown-content">
             <a href="CinemaInfo.jsp?id=<%=id%>">영화관 정보</a>
-              <a href="CinemaReg.jsp?id=<%=id%>">영화관 등록</a>
+            <a href="CinemaReg.jsp?id=<%=id%>">영화관 등록</a>
           </div>
         </div>
         <div class="dropdown">
