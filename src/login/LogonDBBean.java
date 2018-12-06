@@ -61,14 +61,22 @@ public class LogonDBBean {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			
+
 			if(rs.next()) {
 				dbpasswd = rs.getString("회원비밀번호");
-				if(dbpasswd.equals(passwd))
-					x = 1; // 인증 성공
-				else
-					x = 0; // 비밀번호 틀림
-			}else
-				x = -1; // 해당 아이디 없음
+
+				if(dbpasswd.equals(passwd)){	//비밀번호가 일치함					
+					if(id.equals("admin")) {
+						x = 2;	// when id is "admin"
+						}else {
+						x = 3;	//id isn't "admin"
+						}
+				}else {
+					x = 0; //비밀번호 불일치
+				}
+			}else {
+				x = -1; //id가 존재하지 않음
+			}
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}finally {
