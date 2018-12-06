@@ -47,15 +47,22 @@
 						href="ScreenReg.jsp?id=<%=id%>">상영관 등록</a>
 				</div>
 			</div>
-			<div class="dropdown">
-				<button class="dropbtn">
-					고객관리 <i class="fa fa-caret-down"></i>
-				</button>
-				<div class="dropdown-content">
-           			<a href="Customerinfo.jsp?id=<%=id%>">회원정보</a>
-					<a href="MemInfo.jsp?id=<%=id%>">VIP정보</a>
-				</div>
-			</div>
+			      <div class="dropdown">
+          <button class="dropbtn">고객관리
+            <i class="fa fa-caret-down"></i>
+          </button>
+           <div class="dropdown-content">
+            <a href="MemInfo.jsp?id=<%=id%>">VIP정보</a>
+            </div>       
+            </div>
+          <div class="dropdown">
+          <button class="dropbtn">티켓
+            <i class="fa fa-caret-down"></i>
+          </button>
+           <div class="dropdown-content">
+            <a href="ticketIssue.jsp?id=<%=id%>">티켓발행</a>
+            </div>       
+            </div>
 	</header>
 	<b><%=id %></b>님이 로그인 하셨습니다.
 	<form method="post" action="../cookieLogout.jsp">
@@ -92,7 +99,7 @@
 								try {
 									String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
 									String dbId = "root";
-									String dbPass = "admin";
+									String dbPass = "euncha315^^";
 
 									Class.forName("com.mysql.jdbc.Driver");
 									conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);

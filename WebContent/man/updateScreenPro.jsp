@@ -10,6 +10,7 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 
 <%
+	String id = request.getParameter("id");
 	int screenid = Integer.parseInt(request.getParameter("screenid"));
 	int seatnumber = Integer.parseInt(request.getParameter("seatnumber"));
 	String theatername = request.getParameter("theatername");
@@ -52,9 +53,6 @@
 <title>레코드 수정</title>
 </head>
 <body>
-	상영관 테이블의 레코드를 수정했습니다.
-</body>
-</html>
 <%
 			}else{// 패스워드가 일치하지 않을 경우
 				out.println("상영관번호가 일치하지 않습니다.");
@@ -70,3 +68,9 @@
 		if(conn != null) try{conn.close();}catch(SQLException sqle){}
 	}
 %>
+	<form action="ScreenInfo.jsp" id="moveId"><input type="hidden" name="id" value="<%=id%>"></form>
+	<script>
+		moveId.submit();
+	</script>
+</body>
+</html>

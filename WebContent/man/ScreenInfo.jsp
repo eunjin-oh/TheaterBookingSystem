@@ -57,13 +57,20 @@
             <a href="ScreenReg.jsp?id=<%=id%>">상영관 등록</a>
           </div>
    		</div>
-         <div class="dropdown">
+               <div class="dropdown">
           <button class="dropbtn">고객관리
             <i class="fa fa-caret-down"></i>
           </button>
            <div class="dropdown-content">
-           	<a href="Customerinfo.jsp?id=<%=id%>">회원정보</a>
             <a href="MemInfo.jsp?id=<%=id%>">VIP정보</a>
+            </div>       
+            </div>
+          <div class="dropdown">
+          <button class="dropbtn">티켓
+            <i class="fa fa-caret-down"></i>
+          </button>
+           <div class="dropdown-content">
+            <a href="ticketIssue.jsp?id=<%=id%>">티켓발행</a>
             </div>       
             </div>
     </header>
@@ -103,11 +110,13 @@
 					String theatername = rs.getString("영화관이름");
 		%>
 		<tr>
+		<from action>
 			<td><%=screenid%></td>
 			<td><%=seatnumber%></td>
 			<td><%=theatername%></td>
+			</from>
 			<td><a href="deleteScreenForm.jsp?id=<%=id%>&screenid=<%=screenid%>">삭제</a></td>
-			<td><a href="updateScreenForm.jsp?id=<%=id%>&screenid=<%=screenid%>">수정</a></td>
+			<td><a href="updateScreenForm.jsp?id=<%=id%>&screenid=<%=screenid%>&theatername=<%=theatername%>">수정</a></td>
 		</tr>
 		<%
 			}

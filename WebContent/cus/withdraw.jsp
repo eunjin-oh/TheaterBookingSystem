@@ -46,5 +46,6 @@
 	<form method="post" action="../cookieLogout.jsp">
 		<input type="submit" value="로그아웃">
 	</form>
+	
 </body>
 </html>

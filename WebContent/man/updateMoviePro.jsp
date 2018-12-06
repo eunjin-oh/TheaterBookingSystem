@@ -6,6 +6,7 @@
 <% request.setCharacterEncoding("euc-kr"); %>
 
 <%
+	String id = request.getParameter("id");
 	int movieid = Integer.parseInt(request.getParameter("movieid"));
 	String moviename = request.getParameter("moviename");
 	String runtime = request.getParameter("runtime");
@@ -50,12 +51,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>레코드 수정</title>
 </head>
 <body>
-	영화 테이블의 레코드를 수정했습니다.
-</body>
-</html>
 <%
 			}else{// 패스워드가 일치하지 않을 경우
 				out.println("영화이름이 틀렸습니다.");
@@ -71,3 +68,10 @@
 		if(conn != null) try{conn.close();}catch(SQLException sqle){}
 	}
 %>
+
+	<form action="MovieInfo.jsp" id="moveId"><input type="hidden" name="id" value="<%=id%>"></form>
+	<script>
+		moveId.submit();
+	</script>
+	</body>
+</html>
