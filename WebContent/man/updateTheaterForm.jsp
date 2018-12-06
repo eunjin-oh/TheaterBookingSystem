@@ -17,7 +17,7 @@
       <div class="navbar">
         <a href="../manMain.jsp?id=<%=id%>">관리자</a>
         <div class="dropdown">
-          <button class="dropbtn">영화관정보
+          <button class="dropbtn">영화관관리
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
