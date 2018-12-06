@@ -31,7 +31,7 @@
       <div class="navbar">
         <a href="../manMain.jsp?id=<%=id%>">관리자</a>
         <div class="dropdown">
-          <button class="dropbtn">영화관정보
+          <button class="dropbtn">영화관관리
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
@@ -94,7 +94,7 @@
 			try {
 				String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
 				String dbId = "root";
-				String dbPass = "admin";
+				String dbPass = "euncha315^^";
 				
 				Class.forName("com.mysql.jdbc.Driver");
 				conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
