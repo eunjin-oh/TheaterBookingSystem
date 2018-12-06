@@ -62,6 +62,7 @@
             <i class="fa fa-caret-down"></i>
           </button>
            <div class="dropdown-content">
+           	<a href="Customerinfo.jsp?id=<%=id%>">회원정보</a>
             <a href="MemInfo.jsp?id=<%=id%>">VIP정보</a>
             </div>       
             </div>
@@ -101,7 +102,7 @@
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				while (rs.next()) {
-					String ids = rs.getString("회원아이디");
+					String cusid = rs.getString("회원아이디");
 					String passwd = rs.getString("회원비밀번호");
 					String name = rs.getString("회원이름");
 					String birth = rs.getString("생년월일");
@@ -110,15 +111,15 @@
 					String point = rs.getString("포인트");
 		%>
 		<tr>
-			<td><%=ids%></td>
+			<td><%=cusid%></td>
 			<td><%=passwd%></td>
 			<td><%=name%></td>
 			<td><%=birth%></td>
 			<td><%=address%></td>
 			<td><%=phone%></td>
 			<td><%=point%></td>
-			<td><a href="delete.jsp?id=<%=id%>">삭제</a></td>
-			<td><a href="update.jsp?id=<%=id%>">수정</a></td>
+			<td><a href="deleteCustomerForm.jsp?id=<%=id%>&cusid=<%=cusid%>">삭제</a></td>
+			<td><a href="updateCustomerForm.jsp?id=<%=id%>&cusid=<%=cusid%>">수정</a></td>
 		</tr>
 		<%
 			}

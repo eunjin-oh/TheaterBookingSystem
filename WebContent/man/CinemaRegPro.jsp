@@ -110,6 +110,7 @@
             <i class="fa fa-caret-down"></i>
           </button>
            <div class="dropdown-content">
+           	<a href="Customerinfo.jsp?id=<%=id%>">회원정보</a>
             <a href="MemInfo.jsp?id=<%=id%>">VIP정보</a>
             </div>       
             </div>

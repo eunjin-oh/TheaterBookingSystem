@@ -5,6 +5,7 @@
 <%@page import="java.text.SimpleDateFormat" %>
 <%@page import="java.util.Calendar" %>
 <%@page import="java.sql.*" %>
+<%@page import = "login.LogonDBBean" %>
 <% request.setCharacterEncoding("euc-kr"); %>
 
 <!DOCTYPE html>
@@ -62,6 +63,7 @@
             <i class="fa fa-caret-down"></i>
           </button>
            <div class="dropdown-content">
+           	<a href="Customerinfo.jsp?id=<%=id%>">회원정보</a>
             <a href="MemInfo.jsp?id=<%=id%>">VIP정보</a>
             </div>       
             </div>
@@ -89,17 +91,19 @@
 			String str = "";
 			ResultSet rs = null;
 			try {
+
 				String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
 				String dbId = "root";
 				String dbPass = "admin";
 				
 				Class.forName("com.mysql.jdbc.Driver");
 				conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
+				
 				String sql = "select * from 영화관";
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 				while (rs.next()) {
-					String theatername = rs.getString("영화관이름");
+					String theatername = rs.getString("영화관이름"); 
 					String theateradd = rs.getString("영화관주소");
 					String theaterphone = rs.getString("영화관전화번호");
 					String screennumber = rs.getString("상영관수");
@@ -111,8 +115,8 @@
 			<td><%=theaterphone%></td>
 			<td><%=screennumber%></td>
 			<td><%=seatnumber%></td>
-			<td><a href="delete.jsp?id=<%=id%>">삭제</a></td>
-			<td><a href="update.jsp?id=<%=id%>">수정</a></td>
+			<td><a href="deleteTheaterForm.jsp?id=<%=id%>&theatername=<%=theatername%>">삭제</a></td>
+			<td><a href="updateTheaterForm.jsp?id=<%=id%>&theatername=<%=theatername%>">수정</a></td>
 		</tr>
 		<%
 			}
