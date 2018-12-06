@@ -82,7 +82,7 @@
       <div class="navbar">
         <a href="../manMain.jsp?id=<%=id%>">관리자</a>
         <div class="dropdown">
-          <button class="dropbtn">영화관 관리
+          <button class="dropbtn">영화관관리
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
@@ -100,7 +100,7 @@
           </div>
         </div>
            <div class="dropdown">
-          <button class="dropbtn">상영 관리
+          <button class="dropbtn">상영관리
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
@@ -125,7 +125,7 @@
         <br><br>
         <font color="blue"><%=moviename%></font>가 추가되었습니다.
         <br>
-      <a href="#" class="button" type="submit" onclick="move('MovieReg.jsp');"/>영화추가</a>
+      <a href="MovieReg.jsp?id=<%=id%>" class="button" type="submit"/>영화추가</a>
       
     </div>
 </body>
