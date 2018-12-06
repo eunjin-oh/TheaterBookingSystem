@@ -19,8 +19,7 @@
     try{
     	String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
        String dbId = "root";
-       String dbPass = "admin";
-       
+       String dbPass = "euncha315^^";
        
        Class.forName("com.mysql.jdbc.Driver");
        conn = DriverManager.getConnection(jdbcUrl,dbId,dbPass);
@@ -78,11 +77,12 @@
     </style>
 </head>
 <body>
+ <%  request.setCharacterEncoding("UTF-8");  %>
 	<header id="header">
       <div class="navbar">
         <a href="../manMain.jsp?id=<%=id%>">관리자</a>
         <div class="dropdown">
-          <button class="dropbtn">영화관 관리
+          <button class="dropbtn">영화관관리
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
@@ -100,7 +100,7 @@
           </div>
         </div>
            <div class="dropdown">
-          <button class="dropbtn">상영 관리
+          <button class="dropbtn">상영관리
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
@@ -117,14 +117,17 @@
             </div>       
             </div>
     </header>
- <%  request.setCharacterEncoding("UTF-8");  %>
+	<b><%=id%></b>님이 로그인 하셨습니다.
+	<form method="post" action="../cookieLogout.jsp">
+		<input type="submit" value="로그아웃">
+	</form>
  <div id="wrap">
         <br><br>
         <b><font size="5" color="gray">영화추가 정보를 확인하세요.</font></b>
         <br><br>
         <font color="blue"><%=moviename%></font>가 추가되었습니다.
         <br>
-      <a href="#" class="button" type="submit" onclick="move('MovieReg.jsp');"/>영화추가</a>
+      <a href="MovieReg.jsp?id=<%=id%>" class="button" type="submit"/>영화추가</a>
       
     </div>
 </body>

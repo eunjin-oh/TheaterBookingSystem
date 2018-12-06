@@ -22,7 +22,7 @@
 			<a href="../manMain.jsp?id=<%=id%>">관리자</a>
 			<div class="dropdown">
 				<button class="dropbtn">
-					영화관 관리 <i class="fa fa-caret-down"></i>
+					영화관관리 <i class="fa fa-caret-down"></i>
 				</button>
 				<div class="dropdown-content">
 					<a href="CinemaInfo.jsp?id=<%=id%>">영화관 정보</a> <a
@@ -40,7 +40,7 @@
 			</div>
 			<div class="dropdown">
 				<button class="dropbtn">
-					상영 관리 <i class="fa fa-caret-down"></i>
+					상영관리 <i class="fa fa-caret-down"></i>
 				</button>
 				<div class="dropdown-content">
 					<a href="ScreenInfo.jsp?id=<%=id%>">상영관 정보</a> <a
@@ -91,7 +91,7 @@
 								try {
 									String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
 									String dbId = "root";
-									String dbPass = "admin";
+									String dbPass = "euncha315^^";
 
 									Class.forName("com.mysql.jdbc.Driver");
 									conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);

@@ -6,8 +6,9 @@
 <% request.setCharacterEncoding("euc-kr"); %>
 
 <%
-	String theatername = request.getParameter("theatername");
-
+	int movieid = Integer.parseInt(request.getParameter("movieid"));
+	String moviename = request.getParameter("moviename");
+	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -15,25 +16,24 @@
 	try{
 		String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
 		String dbId = "root";
-		String dbPass = "admin";
+		String dbPass = "euncha315^^";
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
-		String sql = "select 영화관이름 from 영화관 where 영화관이름=?";
+		String sql = "select 영화번호, 영화명 from 영화 where 영화번호=?";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1,theatername);
+		pstmt.setInt(1,movieid);
 		rs = pstmt.executeQuery();
-
+		
 		// 레코드의 검색 결과로 작업 처리
 		if(rs.next()){ //기존에 아이디가 존재하는 경우 수행
-			String rName = rs.getString("영화관이름");
-			System.out.println("test");
-			if(theatername.equals(rName)){// 패스워드가 일치하는 경우 수행
-				sql = "delete from 영화관 where 영화관이름 = ?";
+			int mId = rs.getInt("영화번호");
+			String mName = rs.getString("영화명");
+			if(movieid==mId && moviename.equals(mName)){// 패스워드가 일치하는 경우 수행
+				sql = "delete from 영화 where 영화번호 = ?";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, theatername);
+				pstmt.setInt(1, movieid);
 				pstmt.executeUpdate();
-				System.out.println("test");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html14/loose.dtd">
 <html>

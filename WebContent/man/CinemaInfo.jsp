@@ -31,12 +31,12 @@
       <div class="navbar">
         <a href="../manMain.jsp?id=<%=id%>">관리자</a>
         <div class="dropdown">
-          <button class="dropbtn">영화관정보
+          <button class="dropbtn">영화관관리
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
-            <a href="CinemaInfo.jsp?id=<%=id%>">영화관정보</a>
-            <a href="CinemaReg.jsp?id=<%=id%>">영화관등록</a>
+            <a href="CinemaInfo.jsp?id=<%=id%>">영화관 정보</a>
+            <a href="CinemaReg.jsp?id=<%=id%>">영화관 등록</a>
           </div>
         </div>
         <div class="dropdown">
@@ -53,8 +53,8 @@
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
-            <a href="ScreenInfo.jsp?id=<%=id%>">상영관정보</a>
-            <a href="ScreenReg.jsp?id=<%=id%>">상영관등록</a>
+            <a href="ScreenInfo.jsp?id=<%=id%>">상영관 정보</a>
+            <a href="ScreenReg.jsp?id=<%=id%>">상영관 등록</a>
           </div>
    		</div>
          <div class="dropdown">
@@ -71,7 +71,7 @@
 		<input type="submit" value="로그아웃">
 	</form>
 
-	<h2 style="text-align:center;">영화관정보</h2>
+	<h2 style="text-align:center;">영화관 정보</h2>
 	<table border="1" width="600">
 		<tr>
 			<td>영화관이름</td>
@@ -91,7 +91,7 @@
 			try {
 				String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
 				String dbId = "root";
-				String dbPass = "admin";
+				String dbPass = "euncha315^^";
 				
 				Class.forName("com.mysql.jdbc.Driver");
 				conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
