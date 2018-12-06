@@ -62,6 +62,7 @@
             <i class="fa fa-caret-down"></i>
           </button>
            <div class="dropdown-content">
+           	<a href="Customerinfo.jsp?id=<%=id%>">회원정보</a>
             <a href="MemInfo.jsp?id=<%=id%>">VIP정보</a>
             </div>       
             </div>
@@ -117,8 +118,8 @@
 			<td><%=actors%></td>
 			<td><%=rating%></td>
 			<td><%=etcinfo%></td>
-			<td><a href="delete.jsp?id=<%=id%>">삭제</a></td>
-			<td><a href="update.jsp?id=<%=id%>">수정</a></td>
+			<td><a href="deleteMovieForm.jsp?id=<%=id%>&movieid=<%=movieid%>">삭제</a></td>
+			<td><a href="updateMovieForm.jsp?id=<%=id%>&movieid=<%=movieid%>">수정</a></td>
 		</tr>
 		<%
 			}

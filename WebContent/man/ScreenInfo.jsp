@@ -62,6 +62,7 @@
             <i class="fa fa-caret-down"></i>
           </button>
            <div class="dropdown-content">
+           	<a href="Customerinfo.jsp?id=<%=id%>">회원정보</a>
             <a href="MemInfo.jsp?id=<%=id%>">VIP정보</a>
             </div>       
             </div>
@@ -105,8 +106,8 @@
 			<td><%=screenid%></td>
 			<td><%=seatnumber%></td>
 			<td><%=theatername%></td>
-			<td><a href="delete.jsp?id=<%=id%>">삭제</a></td>
-			<td><a href="update.jsp?id=<%=id%>">수정</a></td>
+			<td><a href="deleteScreenForm.jsp?id=<%=id%>&screenid=<%=screenid%>">삭제</a></td>
+			<td><a href="updateScreenForm.jsp?id=<%=id%>&screenid=<%=screenid%>">수정</a></td>
 		</tr>
 		<%
 			}

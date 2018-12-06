@@ -6,17 +6,13 @@
 <% request.setCharacterEncoding("euc-kr"); %>
 
 <%
-	String id = request.getParameter("id");
-	String passwd = request.getParameter("passwd");
-	String name = request.getParameter("name");
-	String birth = request.getParameter("birth");
-	String address = request.getParameter("address");
-    int phone = Integer.parseInt(request.getParameter("phone"));
+	int movieid = Integer.parseInt(request.getParameter("movieid"));
+	String moviename = request.getParameter("moviename");
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	
+		
 	try{
 		String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
 		String dbId = "root";
@@ -24,41 +20,37 @@
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
-		String sql = "select 회원아이디, 회원비밀번호 from 회원  where 회원아이디=?";
+		String sql = "select 영화번호, 영화명 from 영화 where 영화번호=?";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1,id);
+		pstmt.setInt(1,movieid);
 		rs = pstmt.executeQuery();
 		
-		//레코드 검색결과로 작업처리
+		// 레코드의 검색 결과로 작업 처리
 		if(rs.next()){ //기존에 아이디가 존재하는 경우 수행
-			String rId = rs.getString("회원아이디");
-			String rPasswd = rs.getString("회원비밀번호");
-			if(id.equals(rId) && passwd.equals(rPasswd)){
-				sql = "update 회원 set 회원이름 = ?, 생년월일 = ?, 회원주소 = ?, 회원연락처 = ? where 회원아이디 = ?";
+			int mId = rs.getInt("영화번호");
+			String mName = rs.getString("영화명");
+			if(movieid==mId && moviename.equals(mName)){// 패스워드가 일치하는 경우 수행
+				sql = "delete from 영화 where 영화번호 = ?";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, name);
-				pstmt.setString(2, birth);
-				pstmt.setString(3, address);
-				pstmt.setInt(4, phone);
-				pstmt.setString(5, id);
+				pstmt.setInt(1, movieid);
 				pstmt.executeUpdate();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html14/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>레코드 수정</title>
+<title>레코드 삭제</title>
 </head>
 <body>
-	member 테이블의 레코드를 수정했습니다.
+	영화를 삭제했습니다.
 </body>
 </html>
 <%
 			}else{// 패스워드가 일치하지 않을 경우
-				out.println("패스워드가 틀렸습니다.");
+				out.println("영화명이 틀렸습니다.");
 			}
 		}else{//존재하지 않는 아이디인 경우
-			out.println("아이디가 틀렸습니다.");
+			out.println("존재하지않는 영화번호입니다.");
 		}
 	}catch(Exception e){
 		e.printStackTrace();
