@@ -29,8 +29,7 @@
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
-            <a href="searchMovie.jsp?id=<%=id%>">영화검색</a>
-            <a href="reservation.jsp?id=<%=id%>">영화예약</a>
+            <a href="Movie.jsp?id=<%=id%>">영화정보</a>
           </div>
         </div>
            <div class="dropdown">
@@ -40,6 +39,7 @@
           <div class="dropdown-content">
             <a href="reservationInfo.jsp?id=<%=id%>">예약정보</a>
           </div>
+   		</div>
    		</div>
     </header>
 	<b><%=id %></b>님이 로그인 하셨습니다.
@@ -52,48 +52,19 @@
         <b><font size="6" color="gray">회원정보수정</font></b>
         <br><br><br>
         
-        <form method="post" action="modifyInfoPro.jsp" class="formCenter">
-            <table>
-                <tr>
-                    <td id="title">아이디</td>
-                    <td><input type="hidden" name="cusid" value="<%=id%>"/><%=id%>
-                    </td>
+        <form action="modifyInfoPro.jsp" class="formCenter">
+        	<table>
+              <tr>
+                <td>비밀번호를 입력하세요</td>
                 </tr>
-                        
-                <tr>
-                    <td id="title">비밀번호</td>
-                    <td>
-                        <input type="password" name="passwd" maxlength="20">
-                    </td>
-                </tr>   
-                <tr>
-                    <td id="title">이름</td>
-                    <td>
-                        <input type="text" name="name" maxlength="10">
-                    </td>
-                </tr>                  
-                <tr>
-                    <td id="title">생년월일</td>
-                    <td>
-                        <input type="date" name="birth" maxlength="10">                     
-                    </td>
-                </tr>
-                <tr>
-                    <td id="title">주소</td>
-                    <td>
-                        <input type="text" maxlength="100" name="address"/>
-                    </td>
-                </tr>        
-                <tr>
-                    <td id="title">연락처</td>
-                    <td>
-                        <input type="text" maxlength="12" name="phone"/>
-                    </td>
-                </tr>
-
-            </table>
-            <br>
-            <input type="submit" value="수정"/>
-        </form>
+              <tr>
+               	<td><input type="password" name="passwd" maxlength="20"></td>          
+              </tr>                               
+        </table>
+        <br>
+       	<input type="hidden" name="id" value="<%=id%>">          
+        <input type="submit" value="입력">   
+        </form>      
+     </div>       
 </body>
 </html>

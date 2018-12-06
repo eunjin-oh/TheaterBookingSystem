@@ -75,7 +75,7 @@
         <b><font size="6" color="gray">상영관정보수정</font></b>
         <br><br><br>
         
-        <form method="post" action="updateScreenPro.jsp" class="formCenter">
+        <form method="post" action="" class="formCenter">
             <table>
                 <tr>
                     <td id="title">상영관번호</td>
@@ -132,7 +132,10 @@
                 </tr>     
             </table>
             <br>
-            <input type="submit" value="수정"/>  <input type="button" value="취소">
+        
+            <a href="updateScreenPro.jsp?id=<%=id%>&screenid=<%=screenid%>" class="button" type="submit">수정</a>
+            <a href="ScreenInfo.jsp?id=<%=id%>" class="button" type="submit">취소</a>
+         
         </form>
 </body>
 </html>

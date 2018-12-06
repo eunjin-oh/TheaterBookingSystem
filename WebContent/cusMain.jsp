@@ -31,7 +31,7 @@
   <body>
     <header id="header">
       <div class="navbar">
-        <a href="../cusMain.jsp?id=<%=id%>">회원</a>
+        <a href="cusMain.jsp?id=<%=id%>">회원</a>
         <div class="dropdown">
           <button class="dropbtn">My Page
             <i class="fa fa-caret-down"></i>
@@ -46,8 +46,7 @@
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
-            <a href="cus/searchMovie.jsp?id=<%=id%>">영화검색</a>
-            <a href="cus/reservation.jsp?id=<%=id%>">영화예약</a>
+            <a href="Movie.jsp?id=<%=id%>">영화정보</a>
           </div>
         </div>
            <div class="dropdown">
