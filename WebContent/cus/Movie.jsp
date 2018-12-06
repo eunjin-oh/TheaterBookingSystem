@@ -29,8 +29,7 @@
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
-            <a href="searchMovie.jsp?id=<%=id%>">영화검색</a>
-            <a href="reservation.jsp?id=<%=id%>">영화예약</a>
+            <a href="Movie.jsp?id=<%=id%>">영화정보</a>
           </div>
         </div>
            <div class="dropdown">

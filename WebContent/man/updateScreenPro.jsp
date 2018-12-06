@@ -7,11 +7,19 @@
 <%@page import="java.util.Calendar"%>
 <%@page import="java.sql.*"%>
 
-<% request.setCharacterEncoding("UTF-8"); %>
-
-<%
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html14/loose.dtd">
+<html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<title>영화관정보수정</title>
+	<link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<% 
 	String id = request.getParameter("id");
 	int screenid = Integer.parseInt(request.getParameter("screenid"));
+	//String theatername = request.getParameter("theatername");
+	
 	int seatnumber = Integer.parseInt(request.getParameter("seatnumber"));
 	String theatername = request.getParameter("theatername");
 	
@@ -40,17 +48,58 @@
 				pstmt.setInt(1, seatnumber);
 				pstmt.setString(2, theatername);
 				pstmt.setInt(3, screenid);
-
-				System.out.println(seatnumber);
-				System.out.println(theatername);
-				System.out.println(screenid);
 				pstmt.executeUpdate();
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html14/loose.dtd">
-<html>
+<header id="header">
+      <div class="navbar">
+        <a href="../manMain.jsp?id=<%=id%>">관리자</a>
+        <div class="dropdown">
+          <button class="dropbtn">영화관관리
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="CinemaInfo.jsp?id=<%=id%>">영화관 정보</a>
+            <a href="CinemaReg.jsp?id=<%=id%>">영화관 등록</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">영화관리
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="MovieInfo.jsp?id=<%=id%>">영화정보</a>
+            <a href="MovieReg.jsp?id=<%=id%>">영화등록</a>
+          </div>
+        </div>
+           <div class="dropdown">
+          <button class="dropbtn">상영관리
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="ScreenInfo.jsp?id=<%=id%>">상영관 정보</a>
+            <a href="ScreenReg.jsp?id=<%=id%>">상영관 등록</a>
+          </div>
+   		</div>
+          <div class="dropdown">
+          <button class="dropbtn">고객관리
+            <i class="fa fa-caret-down"></i>
+          </button>
+           <div class="dropdown-content">
+            <a href="MemInfo.jsp?id=<%=id%>">VIP정보</a>
+            </div>       
+            </div>
+          <div class="dropdown">
+          <button class="dropbtn">티켓
+            <i class="fa fa-caret-down"></i>
+          </button>
+           <div class="dropdown-content">
+            <a href="ticketIssue.jsp?id=<%=id%>">티켓발행</a>
+            </div>       
+         </div>
+    </div>
+</header>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>레코드 수정</title>
 </head>
 <body>
 <%
@@ -68,6 +117,10 @@
 		if(conn != null) try{conn.close();}catch(SQLException sqle){}
 	}
 %>
+	<b><%=id %></b>님이 로그인 하셨습니다.
+	<form method="post" action="../cookieLogout.jsp">
+		<input type="submit" value="로그아웃">
+	</form>
 	<form action="ScreenInfo.jsp" id="moveId"><input type="hidden" name="id" value="<%=id%>"></form>
 	<script>
 		moveId.submit();

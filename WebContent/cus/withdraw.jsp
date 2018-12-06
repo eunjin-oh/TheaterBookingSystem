@@ -29,8 +29,7 @@
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
-            <a href="searchMovie.jsp?id=<%=id%>">영화검색</a>
-            <a href="reservation.jsp?id=<%=id%>">영화예약</a>
+            <a href="Movie.jsp?id=<%=id%>">영화정보</a>
           </div>
         </div>
            <div class="dropdown">
@@ -41,11 +40,20 @@
             <a href="reservationInfo.jsp?id=<%=id%>">예약정보</a>
           </div>
    		</div>
+   		</div>
     </header>
 	<b><%=id %></b>님이 로그인 하셨습니다.
 	<form method="post" action="../cookieLogout.jsp">
 		<input type="submit" value="로그아웃">
 	</form>
-	
+	<div id="wrap">
+        <br><br>
+        <b><font size="6" color="gray">회원탈퇴</font></b>
+        <br><br><br>    
+          <font color="blue"><%=id%></font>님, 탈퇴하시겠습니까?
+        <br><br><br><br><br>        
+         <a href="deleteMem.jsp?=<%=id%>" class="button">탈퇴</a>
+         <a href="../cusMain.jsp?id=<%=id%>" class="button">취소</a>
+    </div>
 </body>
 </html>

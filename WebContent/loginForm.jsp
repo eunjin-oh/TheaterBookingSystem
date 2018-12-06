@@ -19,14 +19,10 @@ body {
 	<form class="signUp" id="signupForm" method="post"
 		action="cookieLoginPro.jsp">
 		<h1 class="signUpTitle">영화 예약 시스템</h1>
-		<input type="text" class="signUpInput" name="id" placeholder="아이디"
-			autofocus required maxlength="12"> 
-			<input type="password"
-			class="signUpInput" name="passwd" maxlength="12" placeholder="비밀번호"
-			required> 
-			<input type="submit" value="로그인"
-			class="signUpButton"> <a href="#" class="button"
-			type="submit" onclick="move('JoinForm.jsp');" />회원가입</a>
+		<input type="text" class="signUpInput" name="id" placeholder="아이디" autofocus required maxlength="12"> 
+			<input type="password"	class="signUpInput" name="passwd" maxlength="12" placeholder="비밀번호" required> 
+			<input type="submit" value="로그인" class="signUpButton"> 
+			<a href="#" class="button" type="submit" onclick="move('JoinForm.jsp');" />회원가입</a>
 	</form>
 </body>
 </html>

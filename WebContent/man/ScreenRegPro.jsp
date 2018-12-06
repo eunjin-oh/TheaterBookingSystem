@@ -17,7 +17,6 @@
        String dbId = "root";
        String dbPass = "euncha315^^";
        
-       
        Class.forName("com.mysql.jdbc.Driver");
        conn = DriverManager.getConnection(jdbcUrl,dbId,dbPass);
        
@@ -28,10 +27,12 @@
        pstmt.setInt(2,seatnumber);
        pstmt.setString(3,theatername);
 
+
+       System.out.println(screenid+ seatnumber+ theatername);
+       
        pstmt.executeUpdate();     
 
 
-       System.out.println(screenid+ seatnumber+ theatername);
 
        str = "상영관 테이블에 새로운 레코드를 추가했습니다.";
     }catch(Exception e) {

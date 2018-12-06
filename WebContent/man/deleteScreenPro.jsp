@@ -6,6 +6,7 @@
 <% request.setCharacterEncoding("euc-kr"); %>
 
 <%
+	String id = request.getParameter("id");
 	int screenid = Integer.parseInt(request.getParameter("screenid"));
 	
 	Connection conn = null;
@@ -37,12 +38,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>레코드 삭제</title>
 </head>
 <body>
-	상영관을 삭제했습니다.
-</body>
-</html>
 <%
 			}else{// 패스워드가 일치하지 않을 경우
 				out.println("상영관번호가 틀렸습니다.");
@@ -58,3 +55,9 @@
 		if(conn != null) try{conn.close();}catch(SQLException sqle){}
 	}
 %>
+	<form action="ScreenInfo.jsp" id="moveId"><input type="hidden" name="id" value="<%=id%>"></form>
+	<script>
+		moveId.submit();
+	</script>
+</body>
+</html>
