@@ -67,7 +67,7 @@ public class LogonDBBean {
 
 				if(dbpasswd.equals(passwd)){	//비밀번호가 일치함					
 					if(id.equals("admin")) {
-						x = 2;	// when id is "admin"
+						x = 2;	// id is "admin"
 						}else {
 						x = 3;	//id isn't "admin"
 						}
