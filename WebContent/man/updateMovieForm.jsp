@@ -60,6 +60,7 @@
             <a href="ticketIssue.jsp?id=<%=id%>">티켓발행</a>
             </div>       
             </div>
+            </div>
     </header>
 	<b><%=id %></b>님이 로그인 하셨습니다.
 	<form method="post" action="../cookieLogout.jsp">

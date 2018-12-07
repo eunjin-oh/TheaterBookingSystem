@@ -10,7 +10,15 @@
   	<link rel="stylesheet" type="text/css" href="../style.css">
   	<script src="../script.js" type="text/javascript"></script>
   </head>
-  <% String id = request.getParameter("id"); %>
+  <% String id = request.getParameter("id");
+
+	String passwd = request.getParameter("modi_pass");
+	String name = request.getParameter("modi_name");
+	String birth = request.getParameter("modi_birth");
+	String address = request.getParameter("modi_address");
+  	String phone = request.getParameter("modi_phone");
+  
+  %>
   <body>
     <header id="header">
       <div class="navbar">
@@ -43,11 +51,6 @@
    		</div>
     </header>
 <%	
-	String passwd = request.getParameter("modi_passwd");
-	String name = request.getParameter("name");
-	String birth = request.getParameter("birth");
-	String address = request.getParameter("address");
-    String phone = request.getParameter("phone");
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -65,8 +68,8 @@
 		pstmt.setString(1,id);
 		rs = pstmt.executeQuery();
 		
-		//레코드 검색결과로 작업처리
-		if(rs.next()){ //기존에 아이디가 존재하는 경우 수행
+	
+		if(rs.next()){ 
 			String rId = rs.getString("회원아이디");
 			if(id.equals(rId)){
 				sql = "update 회원 set 회원비밀번호= ?,회원이름 = ?, 생년월일 = ?, 회원주소 = ?, 회원연락처 = ? where 회원아이디 = ?";
@@ -129,7 +132,7 @@
             <br><br><br><br>
             <br><br><br><br>
             <br><br><br><br>
-      <a href="modifyInfo.jsp?id=<%=id%>" class="button" type="submit">돌아가기</a>    
+            <input type="button" onclick="location.href='modifyInfo.jsp?id=<%=id%>' " value="돌아가기">
     </div>
 </body>
 </html>

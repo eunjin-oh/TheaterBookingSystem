@@ -8,7 +8,7 @@
     String name = request.getParameter("name");
     String birth = request.getParameter("birth");
     String address = request.getParameter("address");
-    int phone = Integer.parseInt(request.getParameter("phone"));
+    String phone = request.getParameter("phone");
     
     Connection conn = null;
     PreparedStatement pstmt = null;
@@ -31,7 +31,7 @@
        pstmt.setString(3,name);
        pstmt.setString(4,birth);
        pstmt.setString(5,address);
-       pstmt.setInt(6,phone);
+       pstmt.setString(6,phone);
        pstmt.setInt(7,0);
        pstmt.executeUpdate();     
        
