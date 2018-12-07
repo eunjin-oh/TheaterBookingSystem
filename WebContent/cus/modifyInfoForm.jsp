@@ -30,7 +30,7 @@
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
-            <a href="Movie.jsp?id=<%=id%>">영화정보</a>
+            <a href="Movie.jsp?id=<%=id%>">영화예매</a>
           </div>
         </div>
            <div class="dropdown">
