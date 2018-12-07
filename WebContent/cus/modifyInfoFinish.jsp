@@ -56,7 +56,7 @@
 	try{
 		String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
 		String dbId = "root";
-		String dbPass = "euncha315^^";
+		String dbPass = "admin";
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
@@ -126,7 +126,9 @@
                     <td><%=phone%></td>
                 </tr>
             </table>
-            <br>
+            <br><br><br><br>
+            <br><br><br><br>
+            <br><br><br><br>
       <a href="modifyInfo.jsp?id=<%=id%>" class="button" type="submit">돌아가기</a>    
     </div>
 </body>

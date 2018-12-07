@@ -100,7 +100,7 @@
 								try {
 									String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
 									String dbId = "root";
-									String dbPass = "euncha315^^";
+									String dbPass = "admin";
 
 									Class.forName("com.mysql.jdbc.Driver");
 									conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
@@ -131,11 +131,9 @@
 					</select></td>
                 </tr>     
             </table>
-            <br>
-        
+            <br>        
             <a href="updateScreenPro.jsp?id=<%=id%>&screenid=<%=screenid%>" class="button" type="submit">수정</a>
             <a href="ScreenInfo.jsp?id=<%=id%>" class="button" type="submit">취소</a>
-         
         </form>
 </body>
 </html>

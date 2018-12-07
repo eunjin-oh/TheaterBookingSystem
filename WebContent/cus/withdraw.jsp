@@ -52,7 +52,7 @@
         <br><br><br>    
           <font color="blue"><%=id%></font>님, 탈퇴하시겠습니까?
         <br><br><br><br><br>        
-         <a href="deleteMem.jsp?=<%=id%>" class="button">탈퇴</a>
+         <a href="deleteMem.jsp?id=<%=id%>" class="button">탈퇴</a>
          <a href="../cusMain.jsp?id=<%=id%>" class="button">취소</a>
     </div>
 </body>

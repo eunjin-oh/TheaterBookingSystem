@@ -48,31 +48,6 @@
 	<form method="post" action="../cookieLogout.jsp">
 		<input type="submit" value="로그아웃">
 	</form>
-		<%
-			//db 에서 회원목록 얻어와 테이블에 출력하기.
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			String str = "";
-			ResultSet rs = null;
-			try {
-
-				String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
-				String dbId = "root";
-				String dbPass = "euncha315^^";
-				
-				Class.forName("com.mysql.jdbc.Driver");
-				conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
-				
-				String sql = "select * from 회원";
-				pstmt = conn.prepareStatement(sql);
-				rs = pstmt.executeQuery();
-				while (rs.next()) {
-					String ps= rs.getString("회원비밀번호");
-					String n = rs.getString("회원이름");
-					String b = rs.getString("생년월일");
-					String a = rs.getString("회원주소");
-					String p = rs.getString("회원연락처");
-				%>	
 			
 	<div id="wrap">
         <br><br>
@@ -86,23 +61,23 @@
                 </tr>                       
                 <tr>
                     <td id="title">비밀번호</td>
-                    <td><input type="password" name="modi_passwd" maxlength="20" value="<%=ps%>"></td>
+                    <td><input type="password" name="modi_passwd" maxlength="20"></td>
                 </tr>   
                 <tr>
                     <td id="title">이름</td>
-                    <td><input type="text" name="name" maxlength="10" value="<%=n%>"></td>
+                    <td><input type="text" name="name" maxlength="10" ></td>
                 </tr>                  
                 <tr>
                     <td id="title">생년월일</td>
-                    <td><input type="date" name="birth" maxlength="10" value="<%=b%>"></td>
+                    <td><input type="date" name="birth" maxlength="10" ></td>
                 </tr>
                 <tr>
                     <td id="title">주소</td>
-                    <td><input type="text" maxlength="100" name="address" value="<%=a%>"></td>
+                    <td><input type="text" maxlength="100" name="address"></td>
                 </tr>        
                 <tr>
                     <td id="title">연락처</td>
-                    <td><input type="text" maxlength="12" name="phone" value="<%=p%>"></td>
+                    <td><input type="text" maxlength="12" name="phone"></td>
                 </tr>
             </table>
             <br>
@@ -111,21 +86,6 @@
             <input type="submit" value="수정"/>
         </form>
         </div>        
-<% 	}
-				} catch (SQLException se) {
-					System.out.println(se.getMessage());
-				} finally {
-				try {
-						if (rs != null)
-							rs.close();
-						if (pstmt != null)
-							pstmt.close();
-						if (conn != null)
-							conn.close();
-					} catch (SQLException se) {
-						System.out.println(se.getMessage());
-					}
-				}
-			%>
+<
 </body>
 </html>

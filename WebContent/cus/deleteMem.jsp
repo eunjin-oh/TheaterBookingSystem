@@ -18,12 +18,13 @@
 	try{
 		String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
 		String dbId = "root";
-		String dbPass = "euncha315^^";
+		String dbPass = "admin";
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
 			
 		String sql = "delete from 회원 where 회원아이디= ?";
+		
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, id);
 		pstmt.executeUpdate();		
