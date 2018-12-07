@@ -56,9 +56,9 @@
 	</form>
 	<center><h1>영화예매</h1>
 <div class="w3-content w3-section" style="float:center" >
-  <img class="mySlides" src="../photo/snsd.jpg" style="width: 700px; height: 400px;">
-  <img class="mySlides" src="../photo/yourname.jpg" style="width: 700px; height: 400px;">
-  <img class="mySlides" src="../photo/animal.png" style="width: 700px; height: 400px;">
+  <img class="mySlides" src="photo/snsd.jpg" style="width: 700px; height: 400px;">
+  <img class="mySlides" src="photo/yourname.jpg" style="width: 700px; height: 400px;">
+  <img class="mySlides" src="photo/animal.png" style="width: 700px; height: 400px;">
 </div>
 </center>
 <br><br><br><br>
@@ -82,139 +82,147 @@ function carousel() {
 <input type="text" name="subject" placeholder="영화검색" style="width: 100%; text-align:center; font-size:40px;">
 <input type="submit" value="검색">
 </form>
+
+<%
+
+
+
+
+
+%>
 <div id="wrapper">
 			<div id="main">
 				<div class="inner">							
 					<section class="tiles">
 						<article class="style1">
 							<span class="image">
-								<img src="images/pic01.jpg" alt="" />
+								<img src="photo/bohemian.jpeg" alt="" />
 							</span>
 							<a href="#">
-								<h2>Magna</h2>
 								<div class="content">
+								<h2>보헤미안 랩소디</h2>
 									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 								</div>
 							</a>
 						</article>
 						<article class="style2">
 							<span class="image">
-								<img src="images/pic02.jpg" alt="" />
+								<img src="photo/perfect.jpg" alt="" />
 							</span>
 							<a href="#">
-								<h2>Lorem</h2>
 								<div class="content">
+								<h2>완벽한 타인</h2>
 									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 								</div>
 							</a>
 						</article>
 						<article class="style3">
 						<span class="image">
-								<img src="images/pic03.jpg" alt="" />
+								<img src="photo/sbhan.jpg" alt="" />
 							</span>
 							<a href="#">
-								<h2>Feugiat</h2>
 								<div class="content">
+								<h2>신비한 동물사전</h2>
 									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 								</div>
 							</a>
 						</article>
 						<article class="style4">
 							<span class="image">
-								<img src="images/pic04.jpg" alt="" />
+								<img src="photo/again.jpg" alt="" />
 							</span>
 							<a href="#">
-							<h2>Tempus</h2>
 							<div class="content">
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-								</div>
+							<h2>비긴어게인</h2>
+								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+							</div>
 							</a>
 						</article>
 							<article class="style5">
 							<span class="image">
-								<img src="images/pic05.jpg" alt="" />
+								<img src="photo/city.jpg" alt="" />
 							</span>
 							<a href="#">
-								<h2>Aliquam</h2>
 								<div class="content">
+								<h2>범죄도시</h2>
 									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 								</div>
 							</a>
 						</article>
 						<article class="style6">
 						<span class="image">
-								<img src="images/pic06.jpg" alt="" />
+								<img src="photo/kabin.jpg" alt="" />
 							</span>
 							<a href="#">
-								<h2>Veroeros</h2>
 								<div class="content">
+								<h2>케빈에 대하여</h2>
 									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 								</div>
 							</a>
 						</article>
 						<article class="style2">
 							<span class="image">
-								<img src="images/pic07.jpg" alt="" />
+								<img src="photo/life.jpg" alt="" />
 							</span>
 							<a href="#">
-								<h2>Ipsum</h2>
-								<div class="content">
+								<div class="content">								
+								<h2>라이프</h2>
 									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 								</div>
 							</a>
 						</article>
 						<article class="style3">
 							<span class="image">
-							<img src="images/pic08.jpg" alt="" />
+							<img src="photo/nim.jpg" alt="" />
 							</span>
 							<a href="#">
-								<h2>Dolor</h2>
 								<div class="content">
+								<h2>님은 먼곳에</h2>
 									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 								</div>
 							</a>
 						</article>
 						<article class="style1">
 							<span class="image">
-								<img src="images/pic09.jpg" alt="" />
+								<img src="photo/sunrise.jpg" alt="" />
 							</span>
 							<a href="#">
-								<h2>Nullam</h2>
 								<div class="content">
+								<h2>비포 선라이즈</h2>
 									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
 								</div>
 							</a>
 						</article>
 						<article class="style5">
 							<span class="image">
-								<img src="images/pic10.jpg" alt="" />
+								<img src="" alt="" />
 							</span>
 							<a href="#">
-							<h2>Ultricies</h2>
 								<div class="content">
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+							<h2></h2>
+									<p></p>
 								</div>
 							</a>
 						</article>	
 						<article class="style6">
 							<span class="image">
-								<img src="images/pic11.jpg" alt="" />
+								<img src="" alt="" />
 							</span>
 							<a href="#">
-								<h2>Dictum</h2>
 								<div class="content">
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+								<h2></h2>
+									<p></p>
 								</div>
 							</a>
 						</article>
 						<article class="style4">
 							<span class="image">
-								<img src="images/pic12.jpg" alt="" />
+								<img src="" alt="" />
 							</span>
 							<a href="#">
-								<h2>Pretium</h2>
 								<div class="content">
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
+								<h2></h2>
+									<p></p>
 								</div>
 							</a>
 						</article>

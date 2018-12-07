@@ -133,11 +133,9 @@
 					</select></td>
                 </tr>     
             </table>
-            <br>
-        
+            <br>        
             <a href="updateScreenPro.jsp?id=<%=id%>&screenid=<%=screenid%>" class="button" type="submit">수정</a>
             <a href="ScreenInfo.jsp?id=<%=id%>" class="button" type="submit">취소</a>
-         
         </form>
 </body>
 </html>

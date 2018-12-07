@@ -126,7 +126,9 @@
                     <td><%=phone%></td>
                 </tr>
             </table>
-            <br>
+            <br><br><br><br>
+            <br><br><br><br>
+            <br><br><br><br>
       <a href="modifyInfo.jsp?id=<%=id%>" class="button" type="submit">돌아가기</a>    
     </div>
 </body>

@@ -24,6 +24,7 @@
 		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
 			
 		String sql = "delete from 회원 where 회원아이디= ?";
+		
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1, id);
 		pstmt.executeUpdate();		

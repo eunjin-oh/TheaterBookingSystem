@@ -120,8 +120,10 @@
                     </td>
                 </tr>     
             </table>
+            <input type="hidden" name="id" value="<%=id%>"/>
             <br>
-            <input type="submit" value="수정"/>  <input type="button" value="취소">
-        </form>
+            <a href="updateMoviePro.jsp>" class="button" type="submit">수정</a>
+            <a href="MovieInfo.jsp?id=<%=id%>" class="button" type="submit">취소</a>
+       </form>
 </body>
 </html>
