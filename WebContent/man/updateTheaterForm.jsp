@@ -40,6 +40,8 @@
           <div class="dropdown-content">
             <a href="ScreenInfo.jsp?id=<%=id%>">상영관정보</a>
             <a href="ScreenReg.jsp?id=<%=id%>">상영관등록</a>
+            <a href="FilmReg.jsp?id=<%=id%>">상영영화등록</a>
+            <a href="FilmDelete.jsp?id=<%=id%>">상영영화삭제</a>
           </div>
    		</div>
         <div class="dropdown">

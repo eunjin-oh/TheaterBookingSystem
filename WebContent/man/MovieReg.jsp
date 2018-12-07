@@ -25,8 +25,8 @@
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
-            <a href="CinemaInfo.jsp?id=<%=id%>">영화관 정보</a>
-            <a href="CinemaReg.jsp?id=<%=id%>">영화관 등록</a>
+            <a href="CinemaInfo.jsp?id=<%=id%>">영화관정보</a>
+            <a href="CinemaReg.jsp?id=<%=id%>">영화관등록</a>
           </div>
         </div>
         <div class="dropdown">
@@ -43,8 +43,10 @@
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-content">
-            <a href="ScreenInfo.jsp?id=<%=id%>">상영관 정보</a>
-            <a href="ScreenReg.jsp?id=<%=id%>">상영관 등록</a>
+            <a href="ScreenInfo.jsp?id=<%=id%>">상영관정보</a>
+            <a href="ScreenReg.jsp?id=<%=id%>">상영관등록</a>
+            <a href="FilmReg.jsp?id=<%=id%>">상영영화등록</a>
+            <a href="FilmDelete.jsp?id=<%=id%>">상영영화삭제</a>
           </div>
    		</div>
               <div class="dropdown">

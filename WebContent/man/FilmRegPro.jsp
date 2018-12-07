@@ -3,14 +3,19 @@
  <%@ page import="java.sql.*" %>
  <%  request.setCharacterEncoding("UTF-8");  %>
  <% 
-    int screenid = Integer.parseInt(request.getParameter("screenid"));
- 	int seatnumber = Integer.parseInt(request.getParameter("seatnumber"));
-    String theatername = request.getParameter("theatername");
-    String id = request.getParameter("id");
+ 	String id = request.getParameter("id");
+ 	int filmid = Integer.parseInt(request.getParameter("filmid"));
+ 	String moviename = request.getParameter("moviename");
+ 	int movieid = 0;
+ 	int screenid = Integer.parseInt(request.getParameter("screenid"));
+ 	String filmdate = request.getParameter("filmdate");
+ 	String filmstart = request.getParameter("filmstart");
+ 	
     
     Connection conn = null;
     PreparedStatement pstmt = null;
     String str = "";
+    ResultSet rs = null;
     
     try{
     	String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
@@ -20,24 +25,28 @@
        Class.forName("com.mysql.jdbc.Driver");
        conn = DriverManager.getConnection(jdbcUrl,dbId,dbPass);
        
-       String sql = "insert into 상영관 values(?,?,?)";
+       String sql = "select 영화번호 from 영화 where 영화명 = ?";
+       pstmt = conn.prepareStatement(sql);
+       pstmt.setString(1,moviename);
+       rs = pstmt.executeQuery();
+       while (rs.next()) {
+			movieid = rs.getInt("영화번호");
+       }
+
+       sql = "insert into 상영일정 values(?,?,?,?,?)";
        pstmt = conn.prepareStatement(sql);
        
-       pstmt.setInt(1,screenid);
-       pstmt.setInt(2,seatnumber);
-       pstmt.setString(3,theatername);
-
-
-       System.out.println(screenid+ seatnumber+ theatername);
+       pstmt.setInt(1,filmid);
+       pstmt.setInt(2,movieid);
+       pstmt.setInt(3,screenid);
+       pstmt.setString(4,filmdate);
+       pstmt.setString(5,filmstart);
+       pstmt.executeUpdate();
        
-       pstmt.executeUpdate();     
-
-
-
-       str = "상영관 테이블에 새로운 레코드를 추가했습니다.";
+       str = "영화관 테이블에 새로운 레코드를 추가했습니다.";
     }catch(Exception e) {
        e.printStackTrace();
-       str = "상영관 테이블에 새로운 레코드를 추가에 실패했습니다.";
+       str = "영화관 테이블에 새로운 레코드를 추가에 실패했습니다.";
     }finally {
        if(pstmt != null) try{pstmt.close();}catch(SQLException sqle){}
        if(conn != null) try{conn.close();}catch(SQLException sqle){}
@@ -51,7 +60,7 @@
  	<script src="script.js" type="text/javascript"></script>
 <style rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>상영관추가</title>
+<title>가입확인</title>
 <style>
         #wrap{
             margin-left:auto; 
@@ -75,7 +84,9 @@
     </style>
 </head>
 <body>
-	<header id="header">
+
+ <%  request.setCharacterEncoding("UTF-8");  %>
+ 	<header id="header">
       <div class="navbar">
         <a href="../manMain.jsp?id=<%=id%>">관리자</a>
         <div class="dropdown">
@@ -104,6 +115,7 @@
             <a href="ScreenInfo.jsp?id=<%=id%>">상영관정보</a>
             <a href="ScreenReg.jsp?id=<%=id%>">상영관등록</a>
             <a href="FilmReg.jsp?id=<%=id%>">상영영화등록</a>
+            <a href="FilmDelete.jsp?id=<%=id%>">상영영화삭제</a>
           </div>
    		</div>
                <div class="dropdown">
@@ -123,14 +135,17 @@
             </div>       
             </div>
     </header>
- <%  request.setCharacterEncoding("UTF-8");  %>
+	<b><%=id %></b>님이 로그인 하셨습니다.
+	<form method="post" action="../cookieLogout.jsp">
+		<input type="submit" value="로그아웃">
+	</form>
  <div id="wrap">
         <br><br>
-        <b><font size="5" color="gray">상영관추가 정보를 확인하세요.</font></b>
+        <b><font size="5" color="gray">상영영화추가 정보를 확인하세요.</font></b>
         <br><br>
-        <font color="blue"><%=screenid%></font>가 추가되었습니다.
+        <font color="blue"><%=filmid%></font>가 추가되었습니다.
         <br>
-      <a href="ScreenReg.jsp?id=<%=id%>" class="button" type="submit"/>상영관추가</a>
+      <a href="CinemaReg.jsp?id=<%=id%>" class="button" type="submit"/>영화관추가</a>
       
     </div>
 </body>

@@ -1,15 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-	<title>회원정보 수정</title>
-	<link rel="stylesheet" type="text/css" href="../style.css">
-</head>
-<% 
+    
+<%@ page import="java.sql.*" %>
+
+<% request.setCharacterEncoding("euc-kr"); %>
+
+<%
 	String id = request.getParameter("id");
+	int filmid = Integer.parseInt(request.getParameter("filmid"));
+	
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+		
+	try{
+		String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
+		String dbId = "root";
+		String dbPass = "admin";
+		
+		Class.forName("com.mysql.jdbc.Driver");
+		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
+		String sql = "select 상영일정번호 from 상영일정 where 상영일정번호=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setInt(1,filmid);
+		rs = pstmt.executeQuery();
+		
+		// 레코드의 검색 결과로 작업 처리
+		if(rs.next()){ //기존에 아이디가 존재하는 경우 수행
+			int mId = rs.getInt("상영일정번호");
+			if(filmid==mId ){// 패스워드가 일치하는 경우 수행
+				sql = "delete from 상영일정 where 상영일정번호 = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, filmid);
+				pstmt.executeUpdate();
 %>
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+  	<meta charset="UTF-8">
+  	<link rel="stylesheet" type="text/css" href="../style.css">
+  	<script src="../script.js" type="text/javascript"></script>
+  </head>
   <body>
     <header id="header">
       <div class="navbar">
@@ -64,6 +95,21 @@
 	<form method="post" action="../cookieLogout.jsp">
 		<input type="submit" value="로그아웃">
 	</form>
-	
+<%
+			}else{// 패스워드가 일치하지 않을 경우
+				out.println("상영관번호가 틀렸습니다.");
+			}
+		}else{//존재하지 않는 아이디인 경우
+			out.println("존재하지않는 영화번호입니다.");
+		}
+	}catch(Exception e){
+		e.printStackTrace();
+	}finally{
+		if(rs != null) try{rs.close();}catch(SQLException sqle){}
+		if(pstmt != null) try{pstmt.close();}catch(SQLException sqle){}
+		if(conn != null) try{conn.close();}catch(SQLException sqle){}
+	}
+%>
+	<form action="FileRegPro.jsp" id="moveId"><input type="hidden" name="id" value="<%=id%>"></form>
 </body>
 </html>
