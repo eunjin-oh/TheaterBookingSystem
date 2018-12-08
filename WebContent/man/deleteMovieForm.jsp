@@ -34,7 +34,8 @@
             <br><br>
             <input type="hidden" name="movieid" value="<%=movieid%>"/>
             <input type="hidden" name="moviename" value="<%=moviename%>"/>
-          <input type="submit" onclick="location.href='deleteMoviePro.jsp?id=<%=id%>' " value="삭제">
+            <input type="hidden" name="id" value="<%=id%>">
+          <input type="submit" value="삭제">
           <input type="button" onclick="location.href='MovieInfo.jsp?id=<%=id%>' " value="취소">
         </form>
        </div>
