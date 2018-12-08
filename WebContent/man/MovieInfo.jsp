@@ -137,7 +137,7 @@
 			<td><a href="updateMovieForm.jsp?id=<%=id%>&movieid=<%=movieid%>&moviename=<%=moviename%>">수정</a></td>
 			
 		</tr>
-		<%System.out.println(poster);
+		<%
 			}
 			} catch (SQLException se) {
 				System.out.println(se.getMessage());

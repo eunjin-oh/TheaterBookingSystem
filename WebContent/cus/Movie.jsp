@@ -1,9 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
- <%@ page import="java.sql.*" %>
- <%  request.setCharacterEncoding("UTF-8");  %>
-   
-<!DOCTYPE html>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.io.*"%>
+<%@page import="java.text.DecimalFormat" %>
+<%@page import="java.text.SimpleDateFormat" %>
+<%@page import="java.util.Calendar" %>
+<%@page import="java.sql.*" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html14/loose.dtd">
 <html lang="ko">
   <head>
   	<meta charset="UTF-8">
@@ -20,7 +22,7 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 	
 <body>
-<header >
+<header>
       <div class="navbar">
         <a href="../cusMain.jsp?id=<%=id%>">회원</a>
         <div class="dropdown">
@@ -56,9 +58,9 @@
 	</form>
 	<center><h1>영화예매</h1>
 <div class="w3-content w3-section" style="float:center" >
-  <img class="mySlides" src="photo/snsd.jpg" style="width: 700px; height: 400px;">
-  <img class="mySlides" src="photo/yourname.jpg" style="width: 700px; height: 400px;">
-  <img class="mySlides" src="photo/animal.png" style="width: 700px; height: 400px;">
+  <img class="mySlides" src="../photo/snsd.jpg" style="width: 700px; height: 400px;">
+  <img class="mySlides" src="../photo/yourname.jpg" style="width: 700px; height: 400px;">
+  <img class="mySlides" src="../photo/animal.png" style="width: 700px; height: 400px;">
 </div>
 </center>
 <br><br><br><br>
@@ -78,154 +80,60 @@ function carousel() {
     setTimeout(carousel, 2000); // Change image every 2 seconds
 }
 </script>
-<form style="text-align:center;">
-<input type="text" name="subject" placeholder="영화검색" style="width: 100%; text-align:center; font-size:40px;">
-<input type="submit" value="검색">
-</form>
+<div id="dSub" style="text-align:center;">
+<select name="day" class="day" id="findMovie" style="width: 10%; text-align:center; font-size:15px;">
+		<option value="reserv">예매율순</option></select>
+<center><input type="text" name="subject" placeholder="영화검색" onkeydown="enterKey()" style="width: 60%; text-align:center; font-size:40px;"></center>
+</div><br>
 
 <%
 
+Connection conn = null;
+PreparedStatement pstmt = null;
+ResultSet rs = null;
 
-
-
-
+try{
+	String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
+	String dbId = "root";
+	String dbPass = "admin";
+	
+	Class.forName("com.mysql.jdbc.Driver");
+	conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
+	String sql = "select * from 영화";
+	System.out.println(sql);
+	pstmt = conn.prepareStatement(sql);
+	rs = pstmt.executeQuery();
 %>
+
+
 <div id="wrapper">
 			<div id="main">
 				<div class="inner">							
-					<section class="tiles">
-						<article class="style1">
-							<span class="image">
-								<img src="photo/bohemian.jpeg" alt="" />
-							</span>
-							<a href="#">
-								<div class="content">
-								<h2>보헤미안 랩소디</h2>
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-								</div>
-							</a>
-						</article>
+					<section class="tiles">						
+<% 
+	while(rs.next()){
+		int movieid = rs.getInt("영화번호");
+		String moviename = rs.getString("영화명");
+		String runtime = rs.getString("상영시간");
+		String director = rs.getString("감독명");
+		String actors = rs.getString("출연배우명");
+		String rating = rs.getString("상영등급");
+		String etcinfo = rs.getString("주요정보");
+		String fileName = rs.getString("이미지");			
+
+%>
 						<article class="style2">
 							<span class="image">
-								<img src="photo/perfect.jpg" alt="" />
+								<img src="../photo/<%=fileName%>" alt="" />
 							</span>
-							<a href="#">
+							<a href="javascript:popupOpen(<%=movieid%>)";>
 								<div class="content">
-								<h2>완벽한 타인</h2>
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style3">
-						<span class="image">
-								<img src="photo/sbhan.jpg" alt="" />
-							</span>
-							<a href="#">
-								<div class="content">
-								<h2>신비한 동물사전</h2>
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style4">
-							<span class="image">
-								<img src="photo/again.jpg" alt="" />
-							</span>
-							<a href="#">
-							<div class="content">
-							<h2>비긴어게인</h2>
-								<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-							</div>
-							</a>
-						</article>
-							<article class="style5">
-							<span class="image">
-								<img src="photo/city.jpg" alt="" />
-							</span>
-							<a href="#">
-								<div class="content">
-								<h2>범죄도시</h2>
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style6">
-						<span class="image">
-								<img src="photo/kabin.jpg" alt="" />
-							</span>
-							<a href="#">
-								<div class="content">
-								<h2>케빈에 대하여</h2>
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style2">
-							<span class="image">
-								<img src="photo/life.jpg" alt="" />
-							</span>
-							<a href="#">
-								<div class="content">								
-								<h2>라이프</h2>
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style3">
-							<span class="image">
-							<img src="photo/nim.jpg" alt="" />
-							</span>
-							<a href="#">
-								<div class="content">
-								<h2>님은 먼곳에</h2>
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style1">
-							<span class="image">
-								<img src="photo/sunrise.jpg" alt="" />
-							</span>
-							<a href="#">
-								<div class="content">
-								<h2>비포 선라이즈</h2>
-									<p>Sed nisl arcu euismod sit amet nisi lorem etiam dolor veroeros et feugiat.</p>
-								</div>
-							</a>
-						</article>
-						<article class="style5">
-							<span class="image">
-								<img src="" alt="" />
-							</span>
-							<a href="#">
-								<div class="content">
-							<h2></h2>
-									<p></p>
+								<h2><%=moviename%></h2>
+									<p><%=etcinfo%></p>
 								</div>
 							</a>
 						</article>	
-						<article class="style6">
-							<span class="image">
-								<img src="" alt="" />
-							</span>
-							<a href="#">
-								<div class="content">
-								<h2></h2>
-									<p></p>
-								</div>
-							</a>
-						</article>
-						<article class="style4">
-							<span class="image">
-								<img src="" alt="" />
-							</span>
-							<a href="#">
-								<div class="content">
-								<h2></h2>
-									<p></p>
-								</div>
-							</a>
-						</article>
+<%}%>								
 					</section>
 				</div>
 			</div>
@@ -236,6 +144,14 @@ function carousel() {
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
 
-
+<%
+	}catch(Exception e){
+				e.printStackTrace();
+	}finally{
+	if(rs != null) try{rs.close();}catch(SQLException sqle){}
+	if(pstmt != null) try{pstmt.close();}catch(SQLException sqle){}
+	if(conn != null) try{conn.close();}catch(SQLException sqle){}
+	}
+%>
 </body>
 </html>

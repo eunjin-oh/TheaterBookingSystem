@@ -86,7 +86,7 @@
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
 		String sql = "select * from 영화 where 영화번호='"+movieid+"';";
-		System.out.println(sql);
+	
 		pstmt = conn.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 				
