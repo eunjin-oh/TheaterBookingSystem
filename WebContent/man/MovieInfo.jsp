@@ -16,7 +16,6 @@
   </head>
 <% 
 	String id = request.getParameter("id");
-
 %>
 	<style>
 	table{
@@ -77,7 +76,7 @@
             </div>       
             </div>
     </header>
-	<b><%=id %></b>님이 로그인 하셨습니다.
+	<b><%=id%></b>님이 로그인 하셨습니다.
 	<form method="post" action="../cookieLogout.jsp">
 		<input type="submit" value="로그아웃">
 	</form>
@@ -134,8 +133,8 @@
 			<td><%=etcinfo%></td>
 			<td><%=reserve%></td>
 			<td><%=poster%></td>
-			<td><a href="deleteMovieForm.jsp?id=<%=id%>&movieid=<%=movieid%>&mmoviename=<%=moviename%>">삭제</a></td>
-			<td><a href="updateMovieForm.jsp?id=<%=id%>&movieid=<%=movieid%>">수정</a></td>
+			<td><a href="deleteMovieForm.jsp?id=<%=id%>&movieid=<%=movieid%>&moviename=<%=moviename%>">삭제</a></td>
+			<td><a href="updateMovieForm.jsp?id=<%=id%>&movieid=<%=movieid%>&moviename=<%=moviename%>">수정</a></td>
 			
 		</tr>
 		<%System.out.println(poster);

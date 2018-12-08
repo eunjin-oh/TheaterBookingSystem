@@ -8,7 +8,7 @@
  <%  request.setCharacterEncoding("UTF-8");  %>
  <% 
     String moviename = request.getParameter("moviename");
- 	int movieid = Integer.parseInt(request.getParameter("movieid")); //오류발생
+	int movieid = Integer.parseInt(request.getParameter("movieid"));
     String runtime = request.getParameter("runtime");
     String director = request.getParameter("director");
     String actors = request.getParameter("actors");

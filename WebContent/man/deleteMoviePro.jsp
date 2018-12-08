@@ -6,7 +6,6 @@
 <% request.setCharacterEncoding("euc-kr"); %>
 
 <%
-
 	String id = request.getParameter("id");
 	int movieid = Integer.parseInt(request.getParameter("movieid"));
 	String moviename = request.getParameter("moviename");
@@ -59,10 +58,11 @@
 <body>
 	
 	<form action="MovieInfo.jsp" id="goInfo">
-	<input type="hidden" name="id" value="<%=id%>"/>
+	<input type="hidden" name="id" value="<%=id%>">
+	</form>
 	<script>
 	goInfo.submit();
 	</script>
-	</form>
+	
 </body>
 </html>
