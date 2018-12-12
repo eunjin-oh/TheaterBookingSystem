@@ -6,6 +6,7 @@
 <% request.setCharacterEncoding("euc-kr"); %>
 
 <%
+	String id = request.getParameter("id");
 	int movieid = Integer.parseInt(request.getParameter("movieid"));
 	String moviename = request.getParameter("moviename");
 	
@@ -30,22 +31,10 @@
 			int mId = rs.getInt("영화번호");
 			String mName = rs.getString("영화명");
 			if(movieid==mId && moviename.equals(mName)){// 패스워드가 일치하는 경우 수행
-				sql = "delete from 영화 where 영화번호 = ?";
-				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, movieid);
+				sql = "delete *from 영화 where 영화번호 = '"+mId+"';";
+				pstmt = conn.prepareStatement(sql);			
 				pstmt.executeUpdate();
-%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html14/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>레코드 삭제</title>
-</head>
-<body>
-	영화를 삭제했습니다.
-</body>
-</html>
-<%
+
 			}else{// 패스워드가 일치하지 않을 경우
 				out.println("영화명이 틀렸습니다.");
 			}
@@ -60,3 +49,19 @@
 		if(conn != null) try{conn.close();}catch(SQLException sqle){}
 	}
 %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html14/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+</head>
+<body>
+	
+	<form action="MovieInfo.jsp" id="goInfo">
+	<input type="hidden" name="id" value="<%=id%>">
+	</form>
+	<script>
+	goInfo.submit();
+	</script>
+	
+</body>
+</html>

@@ -59,7 +59,7 @@ input::-moz-focus-inner {
 	padding: 0;
 }
 
-input, select, textarea {
+input, textarea {
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	-ms-appearance: none;
@@ -1795,7 +1795,7 @@ input, select, textarea {
 	input[type="password"],
 	input[type="email"],
 	input[type="tel"],
-	select,
+	
 	textarea {
 		-moz-appearance: none;
 		-webkit-appearance: none;
@@ -1832,14 +1832,6 @@ input, select, textarea {
 			box-shadow: inset 0 -1px 0 0 #f2849e;
 		}
 
-	select {
-		background-size: 1.25rem;
-		background-repeat: no-repeat;
-		background-position: calc(100% - 1rem) center;
-		height: 3em;
-		padding-right: 3em;
-		text-overflow: ellipsis;
-	}
 
 		select option {
 			background: #ffffff;

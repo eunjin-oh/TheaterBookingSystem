@@ -1,17 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
- <%@ page import="java.sql.*" %>
+    pageEncoding="UTF-8"%>  
+    <%@page import="java.io.File"%>
+<%@page import="java.util.Enumeration"%>
+<%@ page import="com.oreilly.servlet.MultipartRequest,com.oreilly.servlet.multipart.DefaultFileRenamePolicy,java.util.*,java.io.*" %>
+<%@ page import="java.sql.*" %>
+
  <%  request.setCharacterEncoding("UTF-8");  %>
  <% 
-    int movieid = Integer.parseInt(request.getParameter("movieid"));
     String moviename = request.getParameter("moviename");
+	int movieid = Integer.parseInt(request.getParameter("movieid"));
     String runtime = request.getParameter("runtime");
     String director = request.getParameter("director");
     String actors = request.getParameter("actors");
     String rating = request.getParameter("rating");
     String etcinfo = request.getParameter("etcinfo");
+    String filename1 = request.getParameter("fileName");
     String id = request.getParameter("id");
     
+    System.out.println(movieid);
     Connection conn = null;
     PreparedStatement pstmt = null;
     String str = "";
@@ -25,7 +31,7 @@
        Class.forName("com.mysql.jdbc.Driver");
        conn = DriverManager.getConnection(jdbcUrl,dbId,dbPass);
        
-       String sql = "insert into 영화 values(?,?,?,?,?,?,?)";
+       String sql = "insert into 영화 values(?,?,?,?,?,?,?,?,?)";
        pstmt = conn.prepareStatement(sql);
        
        pstmt.setInt(1,movieid);
@@ -35,6 +41,10 @@
        pstmt.setString(5,actors);
        pstmt.setString(6,rating);
        pstmt.setString(7,etcinfo);
+       pstmt.setInt(8,0);
+       pstmt.setString(9,filename1);
+       
+       System.out.println(filename1);
        pstmt.executeUpdate();     
        
        str = "영화 테이블에 새로운 레코드를 추가했습니다.";
@@ -133,8 +143,10 @@
         <b><font size="5" color="gray">영화추가 정보를 확인하세요.</font></b>
         <br><br>
         <font color="blue"><%=moviename%></font>가 추가되었습니다.
+        
         <br>
-      <a href="MovieReg.jsp?id=<%=id%>" class="button" type="submit"/>영화추가</a>
+         <input type="button" onclick="location.href='MovieReg.jsp?id=<%=id%>' " value="영화 추가하기">
+         <input type="button" onclick="location.href='MovieInfo.jsp?id=<%=id%>' " value="등록확인하기">
       
     </div>
 </body>

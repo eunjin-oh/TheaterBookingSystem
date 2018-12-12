@@ -134,7 +134,8 @@
         <br><br>
         <font color="blue"><%=theatername%></font>가 추가되었습니다.
         <br>
-      <a href="CinemaReg.jsp?id=<%=id%>" class="button" type="submit"/>영화관추가</a>
+      <input type="button" onclick="location.href='CinemaReg.jsp?id=<%=id%>'" value="영화관추가"/>
+      <input type="button" onclick="location.href='CinemaInfo.jsp?id=<%=id%>'" value="영화관목록 보기"/>
       
     </div>
 </body>

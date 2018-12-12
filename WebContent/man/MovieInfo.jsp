@@ -20,7 +20,7 @@
 	<style>
 	table{
 	    border:3px solid lightgrey;
-	    width: 60%;
+	    
 		padding: 20px;
 		text-align: center;
 		margin: auto;
@@ -76,13 +76,13 @@
             </div>       
             </div>
     </header>
-	<b><%=id %></b>님이 로그인 하셨습니다.
+	<b><%=id%></b>님이 로그인 하셨습니다.
 	<form method="post" action="../cookieLogout.jsp">
 		<input type="submit" value="로그아웃">
 	</form>
 
 	<h2 style="text-align:center;">영화정보</h2>
-	<table border="1" width="600">
+	<table border="1" width="1200">
 		<tr>
 			<td>영화번호</td>
 			<td>영화명</td>
@@ -91,6 +91,8 @@
 			<td>출연배우명</td>
 			<td>상영등급</td>
 			<td>주요정보</td>
+			<td>예매율</td>
+			<td>이미지</td>
 			<td>삭제</td>
 			<td>수정</td>
 		</tr>
@@ -118,6 +120,8 @@
 					String actors = rs.getString("출연배우명");
 					String rating = rs.getString("상영등급");
 					String etcinfo = rs.getString("주요정보");
+					int reserve = rs.getInt("예매율");
+					String poster = rs.getString("이미지");
 		%>
 		<tr>
 			<td><%=movieid%></td>
@@ -127,8 +131,11 @@
 			<td><%=actors%></td>
 			<td><%=rating%></td>
 			<td><%=etcinfo%></td>
-			<td><a href="deleteMovieForm.jsp?id=<%=id%>&movieid=<%=movieid%>">삭제</a></td>
-			<td><a href="updateMovieForm.jsp?id=<%=id%>&movieid=<%=movieid%>">수정</a></td>
+			<td><%=reserve%></td>
+			<td><%=poster%></td>
+			<td><a href="deleteMovieForm.jsp?id=<%=id%>&movieid=<%=movieid%>&moviename=<%=moviename%>">삭제</a></td>
+			<td><a href="updateMovieForm.jsp?id=<%=id%>&movieid=<%=movieid%>&moviename=<%=moviename%>">수정</a></td>
+			
 		</tr>
 		<%
 			}

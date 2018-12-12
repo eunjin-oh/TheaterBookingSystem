@@ -6,14 +6,14 @@
 <% request.setCharacterEncoding("euc-kr"); %>
 
 <%
-	String id = request.getParameter("id");
-	int movieid = Integer.parseInt(request.getParameter("movieid"));
-	String moviename = request.getParameter("moviename");
-	String runtime = request.getParameter("runtime");
-	String director = request.getParameter("director");
-	String actors = request.getParameter("actors");
-	String rating = request.getParameter("rating");
-	String etcinfo = request.getParameter("etcinfo");
+	String id = request.getParameter("modi_id");
+	int movieid = Integer.parseInt(request.getParameter("modi_movieid"));
+	String moviename = request.getParameter("modi_moviename");
+	String runtime = request.getParameter("modi_runtime");
+	String director = request.getParameter("modi_director");
+	String actors = request.getParameter("modi_actors");
+	String rating = request.getParameter("modi_rating");
+	String etcinfo = request.getParameter("modi_etcinfo");
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -31,8 +31,8 @@
 		pstmt.setInt(1,movieid);
 		rs = pstmt.executeQuery();
 		
-		//레코드 검색결과로 작업처리
-		if(rs.next()){ //기존에 아이디가 존재하는 경우 수행
+
+		if(rs.next()){
 			int mId = rs.getInt("영화번호");
 			String mName = rs.getString("영화명");
 			if(movieid==mId){
@@ -54,10 +54,10 @@
 </head>
 <body>
 <%
-			}else{// 패스워드가 일치하지 않을 경우
+			}else{
 				out.println("영화이름이 틀렸습니다.");
 			}
-		}else{//존재하지 않는 아이디인 경우
+		}else{
 			out.println("존재하지않는 영화번호입니다.");
 		}
 	}catch(Exception e){

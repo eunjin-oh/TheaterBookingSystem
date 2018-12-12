@@ -1,8 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-    
-<%@ page import="java.sql.*" %>
-
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.io.*"%>
+<%@page import="java.text.DecimalFormat" %>
+<%@page import="java.text.SimpleDateFormat" %>
+<%@page import="java.util.Calendar" %>
+<%@page import="java.sql.*" %>
+<%@page import = "login.LogonDBBean" %>
 <% request.setCharacterEncoding("euc-kr"); %>
 
 <%
@@ -19,38 +22,33 @@
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
-		String sql = "select ¿µÈ­°üÀÌ¸§ from ¿µÈ­°ü where ¿µÈ­°üÀÌ¸§=?";
+		String sql = "select ì˜í™”ê´€ì´ë¦„ from ì˜í™”ê´€ where ì˜í™”ê´€ì´ë¦„=?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1,theatername);
 		rs = pstmt.executeQuery();
-
-		// ·¹ÄÚµåÀÇ °Ë»ö °á°ú·Î ÀÛ¾÷ Ã³¸®
-		if(rs.next()){ //±âÁ¸¿¡ ¾ÆÀÌµð°¡ Á¸ÀçÇÏ´Â °æ¿ì ¼öÇà
-			String rName = rs.getString("¿µÈ­°üÀÌ¸§");
-			System.out.println("test");
-			if(theatername.equals(rName)){// ÆÐ½º¿öµå°¡ ÀÏÄ¡ÇÏ´Â °æ¿ì ¼öÇà
-				sql = "delete from ¿µÈ­°ü where ¿µÈ­°üÀÌ¸§ = ?";
+		// ë ˆì½”ë“œì˜ ê²€ìƒ‰ ê²°ê³¼ë¡œ ìž‘ì—… ì²˜ë¦¬
+		if(rs.next()){ //ê¸°ì¡´ì— ì•„ì´ë””ê°€ ì¡´ìž¬í•˜ëŠ” ê²½ìš° ìˆ˜í–‰
+			String rName = rs.getString("ì˜í™”ê´€ì´ë¦„");		
+			if(theatername.equals(rName)){// íŒ¨ìŠ¤ì›Œë“œê°€ ì¼ì¹˜í•˜ëŠ” ê²½ìš° ìˆ˜í–‰
+				sql = "delete from ì˜í™”ê´€ where ì˜í™”ê´€ì´ë¦„ = ?";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, theatername);
 				pstmt.executeUpdate();
-				System.out.println("test");
+			
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html14/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>·¹ÄÚµå »èÁ¦</title>
 </head>
 <body>
-	¿µÈ­¸¦ »èÁ¦Çß½À´Ï´Ù.
+	ì˜í™”ê´€ì„ ì‚­ì œí–ˆìŠµë‹ˆë‹¤.
 </body>
 </html>
 <%
-			}else{// ÆÐ½º¿öµå°¡ ÀÏÄ¡ÇÏÁö ¾ÊÀ» °æ¿ì
-				out.println("¿µÈ­¸íÀÌ Æ²·È½À´Ï´Ù.");
+			}else{// íŒ¨ìŠ¤ì›Œë“œê°€ ì¼ì¹˜í•˜ì§€ ì•Šì„ ê²½ìš°
+				out.println("ì˜í™”ê´€ì´ í‹€ë ¸ìŠµë‹ˆë‹¤.");
 			}
-		}else{//Á¸ÀçÇÏÁö ¾Ê´Â ¾ÆÀÌµðÀÎ °æ¿ì
-			out.println("Á¸ÀçÇÏÁö¾Ê´Â ¿µÈ­¹øÈ£ÀÔ´Ï´Ù.");
 		}
 	}catch(Exception e){
 		e.printStackTrace();

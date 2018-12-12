@@ -1,80 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
- <%@ page import="java.sql.*" %>
- <%  request.setCharacterEncoding("UTF-8");  %>
- <% 
- 	String theatername = request.getParameter("theatername");
- 	String theateraddress = request.getParameter("theateraddress");
- 	int theaterphone = Integer.parseInt(request.getParameter("theaterphone"));
- 	int screennumber = Integer.parseInt(request.getParameter("screennumber"));
- 	int seatnumber = Integer.parseInt(request.getParameter("seatnumber"));
- 	String id = request.getParameter("id");
-    
-    Connection conn = null;
-    PreparedStatement pstmt = null;
-    String str = "";
-    
-    try{
-    	String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
-       String dbId = "root";
-       String dbPass = "admin";
-       
-       Class.forName("com.mysql.jdbc.Driver");
-       conn = DriverManager.getConnection(jdbcUrl,dbId,dbPass);
-       
-       String sql = "insert into 영화관 values(?,?,?,?,?)";
-       pstmt = conn.prepareStatement(sql);
-       
-       pstmt.setString(1,theatername);
-       pstmt.setString(2,theateraddress);
-       pstmt.setInt(3,theaterphone);
-       pstmt.setInt(4,screennumber);
-       pstmt.setInt(5,seatnumber);
-       pstmt.executeUpdate();
-       
-       str = "영화관 테이블에 새로운 레코드를 추가했습니다.";
-    }catch(Exception e) {
-       e.printStackTrace();
-       str = "영화관 테이블에 새로운 레코드를 추가에 실패했습니다.";
-    }finally {
-       if(pstmt != null) try{pstmt.close();}catch(SQLException sqle){}
-       if(conn != null) try{conn.close();}catch(SQLException sqle){}
-    }
-  %>
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+        <%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.io.IOException"%>
+<%@page import="java.io.*"%>
+<%@page import="java.io.File"%>
+<%@page import="java.text.DecimalFormat" %>
+<%@page import="java.text.SimpleDateFormat" %>
+<%@page import="java.util.Calendar" %>
+<% request.setCharacterEncoding("euc-kr"); %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html14/loose.dtd">
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="../style.css">
- 	<script src="script.js" type="text/javascript"></script>
-<style rel="stylesheet">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>가입확인</title>
-<style>
-        #wrap{
-            margin-left:auto; 
-            margin-right:auto;
-            text-align:center;
-        }
-        
-        table{
-            margin-left:auto; 
-            margin-right:auto;
-            border:3px solid skyblue
-        }
-        
-        td{
-            border:1px solid skyblue
-        }
-        
-        #title{
-            background-color:skyblue
-        }
-    </style>
-</head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="ko">
+  <head>
+  	<meta charset="UTF-8">
+  	<link rel="stylesheet" type="text/css" href="../style.css">
+  	<script src="../script.js" type="text/javascript"></script>
+  </head>
 <body>
 
- <%  request.setCharacterEncoding("UTF-8");  %>
+ <%  request.setCharacterEncoding("UTF-8");  
+	String id = request.getParameter("id");
+ %>
  	<header id="header">
       <div class="navbar">
         <a href="../manMain.jsp?id=<%=id%>">관리자</a>
@@ -128,14 +74,36 @@
 	<form method="post" action="../cookieLogout.jsp">
 		<input type="submit" value="로그아웃">
 	</form>
- <div id="wrap">
+ 	<div id="wrap" >
+        <b><font size="6" color="gray">영화관등록</font></b>
         <br><br>
-        <b><font size="5" color="gray">영화관추가 정보를 확인하세요.</font></b>
-        <br><br>
-        <font color="blue"><%=theatername%></font>가 추가되었습니다.
-        <br>
-      <a href="CinemaReg.jsp?id=<%=id%>" class="button" type="submit"/>영화관추가</a>
-      
+       <form action="CinemaRegPro.jsp">
+        <table>
+       	 <tr>
+        	<td id="title">영화관이름</td>
+        	<td><input type="text" name="theatername" maxlength="10" required></td>
+       	 </tr>
+         <tr>
+      		<td id="title">영화관주소</td>
+       		<td><input type="text" name="theateraddress" maxlength="100" required></td>
+         </tr>
+           <tr>
+      		<td id="title">영화관전화번호</td>
+       		<td><input type="text" name="theaterphone" maxlength="12" required></td>
+         </tr>
+           <tr>
+      		<td id="title">상영관수</td>
+       		<td><input type="text" name="screennumber" maxlength="10" required></td>
+         </tr>
+           <tr>
+      		<td id="title">총좌석수</td>
+       		<td><input type="text" name="seatnumber" maxlength="10" required></td>
+         </tr>
+         </table>
+         <input type="hidden" name="id" value="<%=id%>">   
+           <input type="submit" value="등록하기">
+         <input type="button" onclick="move('CinemaInfo.jsp');" value="돌아가기"/>    	
+      </form>
     </div>
 </body>
 </html>

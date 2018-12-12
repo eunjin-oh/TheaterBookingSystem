@@ -13,12 +13,6 @@
 	String id = request.getParameter("id");
 	String passwd = request.getParameter("passwd");
     
-	String modi_passwd = request.getParameter("modi_passwd");
-	String name = request.getParameter("name");
-	String birth = request.getParameter("birth");
-	String address = request.getParameter("address");
-    String phone = request.getParameter("phone");
-	
     Connection conn = null;
     PreparedStatement pstmt = null;
 	ResultSet rs = null;
