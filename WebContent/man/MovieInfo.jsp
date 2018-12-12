@@ -133,7 +133,11 @@
 			<td><%=etcinfo%></td>
 			<td><%=reserve%></td>
 			<td><%=poster%></td>
+<<<<<<< HEAD
 			<td><a href="deleteMoviePro.jsp?id=<%=id%>&movieid=<%=movieid%>&moviename=<%=moviename%>">삭제</a></td>
+=======
+			<td><a href="deleteMovieForm.jsp?id=<%=id%>&movieid=<%=movieid%>&moviename=<%=moviename%>">삭제</a></td>
+>>>>>>> 21951d60b21f9bf3a9aba78c19a38f193c8e7c26
 			<td><a href="updateMovieForm.jsp?id=<%=id%>&movieid=<%=movieid%>&moviename=<%=moviename%>">수정</a></td>
 			
 		</tr>

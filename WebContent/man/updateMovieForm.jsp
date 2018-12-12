@@ -99,7 +99,11 @@
 			String rating = rs.getString("상영등급");
 			String etcinfo = rs.getString("주요정보");
 			String fileName = rs.getString("이미지");			
+<<<<<<< HEAD
 			System.out.println(passwd);
+=======
+			
+>>>>>>> 21951d60b21f9bf3a9aba78c19a38f193c8e7c26
 	%>
 	
 	<div id="wrap">

@@ -69,7 +69,11 @@ function enterKey() {
 
 
 function popupOpen(movieid){
+<<<<<<< HEAD
 	var popUrl = "./showInfo?movieid="+movieid+".jsp";	//팝업창에 출력될 페이지 URL	
+=======
+	var popUrl = "ShowInfo.jsp?movieid="+movieid;	//팝업창에 출력될 페이지 URL	
+>>>>>>> 21951d60b21f9bf3a9aba78c19a38f193c8e7c26
 	var popOption = "width=500, height=800, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
 		window.open(popUrl,"",popOption);
 }

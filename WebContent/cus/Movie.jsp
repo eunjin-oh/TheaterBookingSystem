@@ -40,7 +40,7 @@
           </button>
           <div class="dropdown-content">
             <a href="Movie.jsp?id=<%=id%>">영화예매</a>
-          </div>
+          </div>          
         </div>
            <div class="dropdown">
           <button class="dropbtn">예약현황
@@ -83,7 +83,11 @@ function carousel() {
 <div id="dSub" style="text-align:center;">
 <select name="day" class="day" id="findMovie" style="width: 10%; text-align:center; font-size:15px;">
 		<option value="reserv">예매율순</option></select>
+<<<<<<< HEAD
 <center><input type="text" name="subject" placeholder="예매율순위" onkeydown="enterKey()" style="width: 60%; text-align:center; font-size:40px;"></center>
+=======
+<center><input type="text" name="subject" placeholder="영화검색" onkeydown="enterKey()" style="width: 60%; text-align:center; font-size:40px;"></center>
+>>>>>>> 21951d60b21f9bf3a9aba78c19a38f193c8e7c26
 </div><br>
 
 <%
@@ -99,7 +103,11 @@ try{
 	
 	Class.forName("com.mysql.jdbc.Driver");
 	conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
+<<<<<<< HEAD
 	String sql = "select @vRank := @vRank + 1 as 순위, 영화번호, 영화명, 상영시간, 감독명, 출연배우명, 상영등급, 주요정보, 이미지 from 영화 as p, (select @vRank :=0) as r order by 예매율 desc";
+=======
+	String sql = "select * from 영화";
+>>>>>>> 21951d60b21f9bf3a9aba78c19a38f193c8e7c26
 	pstmt = conn.prepareStatement(sql);
 	rs = pstmt.executeQuery();
 %>
@@ -112,7 +120,10 @@ try{
 <% 
 	while(rs.next()){
 		int movieid = rs.getInt("영화번호");
+<<<<<<< HEAD
 		int movierank = rs.getInt("순위");
+=======
+>>>>>>> 21951d60b21f9bf3a9aba78c19a38f193c8e7c26
 		String moviename = rs.getString("영화명");
 		String runtime = rs.getString("상영시간");
 		String director = rs.getString("감독명");
@@ -126,10 +137,17 @@ try{
 							<span class="image">
 								<img src="./photo/<%=fileName%>" alt="" />
 							</span>
+<<<<<<< HEAD
 							<a href="javascript:popupOpen(<%=movieid%>)";>
 								<div class="content">
 								<h2><%=moviename%></h2>
 									<p>예매율 <%=movierank%>위</p>
+=======
+							<a href="ShowInfo.jsp?movieid=<%=movieid%>">
+								<div class="content">
+								<h2><%=moviename%></h2>
+									<p><%=etcinfo%></p>
+>>>>>>> 21951d60b21f9bf3a9aba78c19a38f193c8e7c26
 								</div>
 							</a>
 						</article>	
@@ -143,7 +161,10 @@ try{
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 21951d60b21f9bf3a9aba78c19a38f193c8e7c26
 <%
 	}catch(Exception e){
 				e.printStackTrace();

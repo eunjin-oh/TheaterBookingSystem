@@ -1,8 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-    
-<%@ page import="java.sql.*" %>
-
+<%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.io.*"%>
+<%@page import="java.text.DecimalFormat" %>
+<%@page import="java.text.SimpleDateFormat" %>
+<%@page import="java.util.Calendar" %>
+<%@page import="java.sql.*" %>
+<%@page import = "login.LogonDBBean" %>
 <% request.setCharacterEncoding("euc-kr"); %>
 
 <%
@@ -19,16 +22,33 @@
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
+<<<<<<< HEAD
 		
 		String sql = "delete from ��ȭ�� where ��ȭ���̸� = ?";
 		pstmt = conn.prepareStatement(sql);
 		pstmt.setString(1,theatername);
 		pstmt.executeUpdate();
 
+=======
+		String sql = "select 영화관이름 from 영화관 where 영화관이름=?";
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1,theatername);
+		rs = pstmt.executeQuery();
+		// 레코드의 검색 결과로 작업 처리
+		if(rs.next()){ //기존에 아이디가 존재하는 경우 수행
+			String rName = rs.getString("영화관이름");		
+			if(theatername.equals(rName)){// 패스워드가 일치하는 경우 수행
+				sql = "delete from 영화관 where 영화관이름 = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, theatername);
+				pstmt.executeUpdate();
+			
+>>>>>>> 21951d60b21f9bf3a9aba78c19a38f193c8e7c26
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html14/loose.dtd">
 <html>
 <head>
+<<<<<<< HEAD
 	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<title>��ȭ�� ����</title>
 	<link rel="stylesheet" type="text/css" href="../style.css">
@@ -105,6 +125,19 @@
 </html>
 <%
 
+=======
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+</head>
+<body>
+	영화관을 삭제했습니다.
+</body>
+</html>
+<%
+			}else{// 패스워드가 일치하지 않을 경우
+				out.println("영화관이 틀렸습니다.");
+			}
+		}
+>>>>>>> 21951d60b21f9bf3a9aba78c19a38f193c8e7c26
 	}catch(Exception e){
 		e.printStackTrace();
 	}finally{

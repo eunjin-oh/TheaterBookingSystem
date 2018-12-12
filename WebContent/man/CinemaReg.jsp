@@ -12,16 +12,28 @@
 
 <html lang="ko">
   <head>
+<<<<<<< HEAD
      <meta charset="UTF-8">
      <link rel="stylesheet" type="text/css" href="../style.css">
      <script src="../script.js" type="text/javascript"></script>
+=======
+  	<meta charset="UTF-8">
+  	<link rel="stylesheet" type="text/css" href="../style.css">
+  	<script src="../script.js" type="text/javascript"></script>
+>>>>>>> 21951d60b21f9bf3a9aba78c19a38f193c8e7c26
   </head>
 <body>
 
  <%  request.setCharacterEncoding("UTF-8");  
+<<<<<<< HEAD
    String id = request.getParameter("id");
  %>
     <header id="header">
+=======
+	String id = request.getParameter("id");
+ %>
+ 	<header id="header">
+>>>>>>> 21951d60b21f9bf3a9aba78c19a38f193c8e7c26
       <div class="navbar">
         <a href="../manMain.jsp?id=<%=id%>">관리자</a>
         <div class="dropdown">
@@ -70,15 +82,24 @@
             </div>       
             </div>
     </header>
+<<<<<<< HEAD
    <b><%=id %></b>님이 로그인 하셨습니다.
    <form method="post" action="../cookieLogout.jsp">
       <input type="submit" value="로그아웃">
    </form>
     <div id="wrap" >
+=======
+	<b><%=id %></b>님이 로그인 하셨습니다.
+	<form method="post" action="../cookieLogout.jsp">
+		<input type="submit" value="로그아웃">
+	</form>
+ 	<div id="wrap" >
+>>>>>>> 21951d60b21f9bf3a9aba78c19a38f193c8e7c26
         <b><font size="6" color="gray">영화관등록</font></b>
         <br><br>
        <form action="CinemaRegPro.jsp">
         <table>
+<<<<<<< HEAD
            <tr>
            <td id="title">영화관이름</td>
            <td><input type="text" name="theatername" maxlength="10" required></td>
@@ -98,11 +119,36 @@
            <tr>
             <td id="title">총좌석수</td>
              <td><input type="text" name="seatnumber" maxlength="10" required></td>
+=======
+       	 <tr>
+        	<td id="title">영화관이름</td>
+        	<td><input type="text" name="theatername" maxlength="10" required></td>
+       	 </tr>
+         <tr>
+      		<td id="title">영화관주소</td>
+       		<td><input type="text" name="theateraddress" maxlength="100" required></td>
+         </tr>
+           <tr>
+      		<td id="title">영화관전화번호</td>
+       		<td><input type="text" name="theaterphone" maxlength="12" required></td>
+         </tr>
+           <tr>
+      		<td id="title">상영관수</td>
+       		<td><input type="text" name="screennumber" maxlength="10" required></td>
+         </tr>
+           <tr>
+      		<td id="title">총좌석수</td>
+       		<td><input type="text" name="seatnumber" maxlength="10" required></td>
+>>>>>>> 21951d60b21f9bf3a9aba78c19a38f193c8e7c26
          </tr>
          </table>
          <input type="hidden" name="id" value="<%=id%>">   
            <input type="submit" value="등록하기">
+<<<<<<< HEAD
          <input type="button" onclick="move('CinemaInfo.jsp');" value="돌아가기"/>       
+=======
+         <input type="button" onclick="move('CinemaInfo.jsp');" value="돌아가기"/>    	
+>>>>>>> 21951d60b21f9bf3a9aba78c19a38f193c8e7c26
       </form>
     </div>
 </body>

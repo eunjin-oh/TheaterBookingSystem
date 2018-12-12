@@ -73,7 +73,11 @@
 		<input type="submit" value="로그아웃">
 	</form>
 	
+<<<<<<< HEAD
 	<div id="wrap" class="formCenter" >
+=======
+	<div id="wrap">
+>>>>>>> 21951d60b21f9bf3a9aba78c19a38f193c8e7c26
         <b><font size="6" color="gray">영화등록</font></b>    
           <br> <br>     
         <form action="MovieRegPro.jsp" enctype="Multipart/form-data">
@@ -120,10 +124,17 @@
             </table>
             <br>
             <input type="hidden" name="id" value="<%=id%>">
+<<<<<<< HEAD
             <input type="submit" value="등록"/>        
         </form>
         <br>
            <input type="button" onclick="location.href='MovieInfo.jsp?id=<%=id%>' " value="취소">
+=======
+            <input type="submit" value="등록"/>
+           <input type="button" onclick="location.href='MovieInfo.jsp?id=<%=id%>' " value="취소">        
+        </form>
+        <br>
+>>>>>>> 21951d60b21f9bf3a9aba78c19a38f193c8e7c26
     </div> 
 </body>
 </html>

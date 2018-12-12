@@ -105,7 +105,7 @@
             </table>
             <br>            
             <input type="hidden" name="id"value="<%=id%>"/> 
-            <input type="submit" value="수정"/>  <input type="button" value="취소">
+            <input type="submit" value="수정"/>  <input type="button" onclick="location.href='CinemaInfo.jsp?id=<%=id%>'" value="취소">
         </form>
 </body>
 </html>

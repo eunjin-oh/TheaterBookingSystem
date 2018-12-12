@@ -10,7 +10,10 @@
   	<link rel="stylesheet" type="text/css" href="../style.css">
   	<script src="../script.js" type="text/javascript"></script>
   </head>
-  <% String id = request.getParameter("id"); %>
+  <% String id = request.getParameter("id");
+ 	 String theatername = request.getParameter("theatername");
+ 	 int movieid = Integer.parseInt(request.getParameter("movieid"));	 
+  %>
   <body>
     <header id="header">
       <div class="navbar">
@@ -45,5 +48,23 @@
 	<form method="post" action="../cookieLogout.jsp">
 		<input type="submit" value="로그아웃">
 	</form>
+
+ <div id="wrap" >
+        <br><br>
+        <b><font size="5" color="gray"> 영화 상영 날짜 선택</font></b>
+        <form class="formCenter" action="reservationScreen.jsp">
+         <table>
+          <tr>
+           <td id="title">날짜선택</td>
+           <td><input type="date" name="rsvDate" min="2018-12-12" required></td>
+          </tr>       
+         </table>       
+         <input type="hidden" name="id" value="<%=id%>">
+         <input type="hidden" name="movieid" value="<%=movieid%>">
+         <input type="hidden" name="theatername" value="<%=theatername%>">
+         <input type="submit" value="다음">
+         <input type="button" onclick="move('Movie.jsp?id=<%=id%>');" value="취소" />
+        </form>
+  </div>
 </body>
 </html>
