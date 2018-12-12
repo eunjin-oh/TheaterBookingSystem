@@ -1,11 +1,10 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-        <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.io.IOException"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.io.*"%>
-<%@page import="java.io.File"%>
 <%@page import="java.text.DecimalFormat" %>
 <%@page import="java.text.SimpleDateFormat" %>
 <%@page import="java.util.Calendar" %>
+<%@page import="java.sql.*" %>
 <% request.setCharacterEncoding("euc-kr"); %>
 
 <!DOCTYPE html>
@@ -15,9 +14,19 @@
   	<link rel="stylesheet" type="text/css" href="../style.css">
   	<script src="../script.js" type="text/javascript"></script>
   </head>
-  <% String id = request.getParameter("id");  
-	String screenid = request.getParameter("screenid");
-  %>
+<% 
+	String id = request.getParameter("id");
+	String cusid = request.getParameter("cusid");	
+%>
+	<style>
+	table{
+	    border:3px solid lightgrey;
+	    width: 60%;
+		padding: 20px;
+		text-align: center;
+		margin: auto;
+	}
+	</style>
   <body>
     <header id="header">
       <div class="navbar">
@@ -72,23 +81,78 @@
 	<form method="post" action="../cookieLogout.jsp">
 		<input type="submit" value="로그아웃">
 	</form>
-<body>
-   <div id="wrap" >
-        <br><br>
-        <b><font size="6" color="gray">상영관삭제</font></b>
-        <br><br><br>   
-        <form  class="formCenter">     
-         <table>
-           <tr>
-             <td id="title">영화번호</td>
-             <td><%=screenid%></td>
-           </tr>
-           </table>
-      <br><br>  
-          <a href="deleteScreenPro.jsp?id=<%=id%>&screenid=<%=screenid%>" class="button" type="submit">삭제</a>
-         <a href="ScreenInfo.jsp?id=<%=id%>" class="button" type="submit">취소</a>
-          </form>
-         
-    </div>
+
+	<h2 style="text-align:center;"><%=cusid %>님의 티켓정보</h2>
+	<table border="1" width="600">
+		<tr>
+			<td>회원아이디</td>
+			<td>결제번호</td>
+			<td>결제유형</td>
+			<td>결제방법</td>
+			<td>결제유무</td>
+			<td>티켓발행</td>
+		</tr>
+		<%
+			//db 에서 회원목록 얻어와 테이블에 출력하기.
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			String str = "";
+			ResultSet rs = null;
+			try {
+				String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
+				String dbId = "root";
+				String dbPass = "admin";
+				
+				Class.forName("com.mysql.jdbc.Driver");
+				conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
+				String sql = "select * from 결제정보 where 회원아이디 = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, cusid);
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					int payid = rs.getInt("결제번호");
+					String payway = rs.getString("결제유형");
+					String paymethod = rs.getString("결제방법");
+					String payment = rs.getString("결제유무");
+					
+		%>
+		<tr>
+			<td><%=cusid%></td>
+			<td><%=payid%></td>
+			<td><%=payway%></td>
+			<td><%=paymethod%></td>
+			<%
+			if(payment==null){
+				%>
+			<td><a href='payment.jsp?id=<%=id%>&cusid=<%=cusid %>&payid=<%=payid%>'>미결제</a></td>
+				<%
+			}else{
+				%>
+			<td>결제완료</td>
+			<%	
+			}
+			%>
+			
+			<td><a href='getticket.jsp'>발행</a></td>
+		</tr>
+		<%
+			}
+			} catch (SQLException se) {
+				System.out.println(se.getMessage());
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException se) {
+					System.out.println(se.getMessage());
+				}
+			}
+		%>
+	</table>
+
 </body>
 </html>

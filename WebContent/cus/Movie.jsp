@@ -58,9 +58,9 @@
 	</form>
 	<center><h1>영화예매</h1>
 <div class="w3-content w3-section" style="float:center" >
-  <img class="mySlides" src="../photo/snsd.jpg" style="width: 700px; height: 400px;">
-  <img class="mySlides" src="../photo/yourname.jpg" style="width: 700px; height: 400px;">
-  <img class="mySlides" src="../photo/animal.png" style="width: 700px; height: 400px;">
+  <img class="mySlides" src="./photo/snsd.jpg" style="width: 700px; height: 400px;">
+  <img class="mySlides" src="./photo/yourname.jpg" style="width: 700px; height: 400px;">
+  <img class="mySlides" src="./photo/animal.png" style="width: 700px; height: 400px;">
 </div>
 </center>
 <br><br><br><br>
@@ -83,7 +83,7 @@ function carousel() {
 <div id="dSub" style="text-align:center;">
 <select name="day" class="day" id="findMovie" style="width: 10%; text-align:center; font-size:15px;">
 		<option value="reserv">예매율순</option></select>
-<center><input type="text" name="subject" placeholder="영화검색" onkeydown="enterKey()" style="width: 60%; text-align:center; font-size:40px;"></center>
+<center><input type="text" name="subject" placeholder="예매율순위" onkeydown="enterKey()" style="width: 60%; text-align:center; font-size:40px;"></center>
 </div><br>
 
 <%
@@ -99,8 +99,7 @@ try{
 	
 	Class.forName("com.mysql.jdbc.Driver");
 	conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
-	String sql = "select * from 영화";
-	System.out.println(sql);
+	String sql = "select @vRank := @vRank + 1 as 순위, 영화번호, 영화명, 상영시간, 감독명, 출연배우명, 상영등급, 주요정보, 이미지 from 영화 as p, (select @vRank :=0) as r order by 예매율 desc";
 	pstmt = conn.prepareStatement(sql);
 	rs = pstmt.executeQuery();
 %>
@@ -113,6 +112,7 @@ try{
 <% 
 	while(rs.next()){
 		int movieid = rs.getInt("영화번호");
+		int movierank = rs.getInt("순위");
 		String moviename = rs.getString("영화명");
 		String runtime = rs.getString("상영시간");
 		String director = rs.getString("감독명");
@@ -124,12 +124,12 @@ try{
 %>
 						<article class="style2">
 							<span class="image">
-								<img src="../photo/<%=fileName%>" alt="" />
+								<img src="./photo/<%=fileName%>" alt="" />
 							</span>
 							<a href="javascript:popupOpen(<%=movieid%>)";>
 								<div class="content">
 								<h2><%=moviename%></h2>
-									<p><%=etcinfo%></p>
+									<p>예매율 <%=movierank%>위</p>
 								</div>
 							</a>
 						</article>	

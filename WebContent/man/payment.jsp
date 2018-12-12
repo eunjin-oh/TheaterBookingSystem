@@ -16,6 +16,8 @@
   </head>
 <% 
 	String id = request.getParameter("id");
+	String cusid = request.getParameter("cusid");	
+	int payid = Integer.parseInt(request.getParameter("payid"));
 %>
 	<style>
 	table{
@@ -80,20 +82,13 @@
 	<form method="post" action="../cookieLogout.jsp">
 		<input type="submit" value="로그아웃">
 	</form>
-
-	<h2 style="text-align:center;">회원정보</h2>
+	
+	<h2 style="text-align:center;">현장결제</h2>
+	<form action="payment2.jsp?">
 	<table border="1" width="600">
 		<tr>
 			<td>회원아이디</td>
-			<td>회원비밀번호</td>
-			<td>회원이름</td>
-			<td>생년월일</td>
-			<td>회원주소</td>
-			<td>회원연락처</td>
-			<td>포인트</td>
-			<td>구매횟수</td>
-			<td>삭제</td>
-			<td>수정</td>
+			<td>결제금액</td>
 		</tr>
 		<%
 			//db 에서 회원목록 얻어와 테이블에 출력하기.
@@ -108,28 +103,16 @@
 				
 				Class.forName("com.mysql.jdbc.Driver");
 				conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
-				String sql = "select * from 회원";
+				String sql = "select * from 결제정보 where 결제번호= ?";
 				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1,payid);
 				rs = pstmt.executeQuery();
 				while (rs.next()) {
-					String cusid = rs.getString("회원아이디");
-					String passwd = rs.getString("회원비밀번호");
-					String name = rs.getString("회원이름");
-					String birth = rs.getString("생년월일");
-					String address = rs.getString("회원주소");
-					String phone = rs.getString("회원연락처");
-					String point = rs.getString("포인트");
+					int totalmoney = rs.getInt("최종결제금액");
 		%>
 		<tr>
 			<td><%=cusid%></td>
-			<td><%=passwd%></td>
-			<td><%=name%></td>
-			<td><%=birth%></td>
-			<td><%=address%></td>
-			<td><%=phone%></td>
-			<td><%=point%></td>
-			<td><a href="deleteCustomerForm.jsp?id=<%=id%>&cusid=<%=cusid%>">삭제</a></td>
-			<td><a href="updateCustomerForm.jsp?id=<%=id%>&cusid=<%=cusid%>">수정</a></td>
+			<td><%=totalmoney%></td>
 		</tr>
 		<%
 			}
@@ -148,7 +131,12 @@
 				}
 			}
 		%>
+		<tr>
+			<input type="hidden" name="id" value="<%=id %>">
+			<input type="hidden" name="payid" value="<%=payid %>">
+			<td colspan="2"><input type="submit" value="결제"></td>
+		</tr>
 	</table>
-
+	</form>
 </body>
 </html>

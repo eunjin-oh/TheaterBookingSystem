@@ -33,20 +33,19 @@
 			movieid = rs.getInt("영화번호");
        }
 
-       sql = "insert into 상영일정 values(?,?,?,?,?)";
+       sql = "insert into 상영영화 values(?,?,?,?)";
        pstmt = conn.prepareStatement(sql);
        
        pstmt.setInt(1,filmid);
        pstmt.setInt(2,movieid);
        pstmt.setInt(3,screenid);
-       pstmt.setString(4,filmdate);
        pstmt.setString(5,filmstart);
        pstmt.executeUpdate();
        
-       str = "영화관 테이블에 새로운 레코드를 추가했습니다.";
+       str = "상영영화 테이블에 새로운 레코드를 추가했습니다.";
     }catch(Exception e) {
        e.printStackTrace();
-       str = "영화관 테이블에 새로운 레코드를 추가에 실패했습니다.";
+       str = "상영영화 테이블에 새로운 레코드를 추가에 실패했습니다.";
     }finally {
        if(pstmt != null) try{pstmt.close();}catch(SQLException sqle){}
        if(conn != null) try{conn.close();}catch(SQLException sqle){}

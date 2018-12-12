@@ -80,7 +80,7 @@
         <form method="post" action="FilmRegPro.jsp" class="formCenter">
             <table>
                 <tr>
-                    <td id="title">상영일정번호</td>
+                    <td id="title">상영영화번호</td>
                     <td>
                         <input type="text" name="filmid" maxlength="10">    
                     </td>
@@ -168,13 +168,7 @@
 								}
 							%>
 					</select></td>
-				</tr>             
-                <tr>
-                    <td id="title">상영일</td>
-                    <td>                
-                        <input type="date" name="filmdate" maxlength="10">                     
-                    </td>
-                </tr>
+				</tr>
                 <tr>
                     <td id="title">상영시작시간</td>
                     <td>

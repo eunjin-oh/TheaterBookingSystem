@@ -5,7 +5,7 @@
 <%@page import="java.text.SimpleDateFormat" %>
 <%@page import="java.util.Calendar" %>
 <%@page import="java.sql.*" %>
-<%@page import = "login.LogonDBBean" %>
+<!--<%@page import = "login.LogonDBBean" %>-->
 <% request.setCharacterEncoding("euc-kr"); %>
 
 <!DOCTYPE html>
@@ -124,7 +124,7 @@
 			<td><%=theaterphone%></td>
 			<td><%=screennumber%></td>
 			<td><%=seatnumber%></td>
-			<td><a href="deleteTheaterForm.jsp?id=<%=id%>&theatername=<%=theatername%>">삭제</a></td>
+			<td><a href="deleteTheaterPro.jsp?id=<%=id%>&theatername=<%=theatername%>">삭제</a></td>
 			<td><a href="updateTheaterForm.jsp?id=<%=id%>&theatername=<%=theatername%>">수정</a></td>
 		</tr>
 		<%

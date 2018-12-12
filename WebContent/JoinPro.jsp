@@ -23,7 +23,7 @@
        Class.forName("com.mysql.jdbc.Driver");
        conn = DriverManager.getConnection(jdbcUrl,dbId,dbPass);
        
-       String sql = "insert into 회원 values(?,?,?,?,?,?,?)";
+       String sql = "insert into 회원 values(?,?,?,?,?,?,?,?)";
        pstmt = conn.prepareStatement(sql);
        
        pstmt.setString(1,id);
@@ -33,6 +33,7 @@
        pstmt.setString(5,address);
        pstmt.setString(6,phone);
        pstmt.setInt(7,0);
+       pstmt.setInt(8,0);
        pstmt.executeUpdate();     
        
        str = "회원 테이블에 새로운 레코드를 추가했습니다.";

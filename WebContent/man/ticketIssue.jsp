@@ -65,5 +65,25 @@
 		<input type="submit" value="로그아웃">
 	</form>
 	
+	<div id="wrap">
+        <br><br>
+        <b><font size="6" color="gray">티켓발매</font></b>
+        <br><br><br>
+        
+        <form action="ticketInfo.jsp" class="formCenter">
+        	<table>
+              <tr>
+                <td>회원아이디를 입력하세요</td>
+                </tr>
+              <tr>
+               	<td><input type="text" name="cusid" maxlength="20"></td>          
+              </tr>                               
+        </table>
+        <br>
+       	<input type="hidden" name="id" value="<%=id%>">          
+        <input type="submit" value="입력">   
+        </form>      
+     </div> 
+	
 </body>
 </html>

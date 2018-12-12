@@ -16,6 +16,32 @@
   </head>
 <% 
 	String id = request.getParameter("id");
+	int payid = Integer.parseInt(request.getParameter("payid"));
+
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	String str = "";
+	ResultSet rs = null;
+	try {
+		String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
+		String dbId = "root";
+		String dbPass = "admin";
+		
+		Class.forName("com.mysql.jdbc.Driver");
+		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
+		String sql = "update 결제정보 set 결제유무 = ? where 결제번호 = ?";
+		System.out.println(sql);
+		pstmt.setString(1, "결제완료");
+		pstmt.setInt(2, payid);
+		pstmt.executeUpdate();
+		
+	}catch(Exception e){
+		e.printStackTrace();
+	}finally{
+		if(rs != null) try{rs.close();}catch(SQLException sqle){}
+		if(pstmt != null) try{pstmt.close();}catch(SQLException sqle){}
+		if(conn != null) try{conn.close();}catch(SQLException sqle){}
+	}
 %>
 	<style>
 	table{
@@ -79,76 +105,6 @@
 	<b><%=id %></b>님이 로그인 하셨습니다.
 	<form method="post" action="../cookieLogout.jsp">
 		<input type="submit" value="로그아웃">
-	</form>
-
-	<h2 style="text-align:center;">회원정보</h2>
-	<table border="1" width="600">
-		<tr>
-			<td>회원아이디</td>
-			<td>회원비밀번호</td>
-			<td>회원이름</td>
-			<td>생년월일</td>
-			<td>회원주소</td>
-			<td>회원연락처</td>
-			<td>포인트</td>
-			<td>구매횟수</td>
-			<td>삭제</td>
-			<td>수정</td>
-		</tr>
-		<%
-			//db 에서 회원목록 얻어와 테이블에 출력하기.
-			Connection conn = null;
-			PreparedStatement pstmt = null;
-			String str = "";
-			ResultSet rs = null;
-			try {
-				String jdbcUrl = "jdbc:mysql://localhost:3306/db_termp?useUnicode=true&characterEncoding=UTF-8";
-				String dbId = "root";
-				String dbPass = "admin";
-				
-				Class.forName("com.mysql.jdbc.Driver");
-				conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
-				String sql = "select * from 회원";
-				pstmt = conn.prepareStatement(sql);
-				rs = pstmt.executeQuery();
-				while (rs.next()) {
-					String cusid = rs.getString("회원아이디");
-					String passwd = rs.getString("회원비밀번호");
-					String name = rs.getString("회원이름");
-					String birth = rs.getString("생년월일");
-					String address = rs.getString("회원주소");
-					String phone = rs.getString("회원연락처");
-					String point = rs.getString("포인트");
-		%>
-		<tr>
-			<td><%=cusid%></td>
-			<td><%=passwd%></td>
-			<td><%=name%></td>
-			<td><%=birth%></td>
-			<td><%=address%></td>
-			<td><%=phone%></td>
-			<td><%=point%></td>
-			<td><a href="deleteCustomerForm.jsp?id=<%=id%>&cusid=<%=cusid%>">삭제</a></td>
-			<td><a href="updateCustomerForm.jsp?id=<%=id%>&cusid=<%=cusid%>">수정</a></td>
-		</tr>
-		<%
-			}
-			} catch (SQLException se) {
-				System.out.println(se.getMessage());
-			} finally {
-				try {
-					if (rs != null)
-						rs.close();
-					if (pstmt != null)
-						pstmt.close();
-					if (conn != null)
-						conn.close();
-				} catch (SQLException se) {
-					System.out.println(se.getMessage());
-				}
-			}
-		%>
-	</table>
-
+		결제가 완료되었습니다.
 </body>
 </html>

@@ -117,7 +117,7 @@
 			<td><%=seatnumber%></td>
 			<td><%=theatername%></td>
 			</from>
-			<td><a href="deleteScreenForm.jsp?id=<%=id%>&screenid=<%=screenid%>">삭제</a></td>
+			<td><a href="deleteScreenPro.jsp?id=<%=id%>&screenid=<%=screenid%>">삭제</a></td>
 			<td><a href="updateScreenForm.jsp?id=<%=id%>&screenid=<%=screenid%>&theatername=<%=theatername%>">수정</a></td>
 		</tr>
 		<%
