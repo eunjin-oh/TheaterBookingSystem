@@ -59,7 +59,7 @@
    		</div>
     </header>
 	<b><%=id %></b>님이 로그인 하셨습니다.
-	<form method="post" action="../cookieLogout.jsp">
+	<form method="post" action="cookieLogout.jsp">
 		<input type="submit" value="로그아웃">
 	</form>
 </body>

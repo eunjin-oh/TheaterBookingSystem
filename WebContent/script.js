@@ -67,10 +67,3 @@ function enterKey() {
 	}
 }
 
-
-function popupOpen(movieid){
-	var popUrl = "./showInfo?movieid="+movieid+".jsp";	//팝업창에 출력될 페이지 URL	
-	var popOption = "width=500, height=800, resizable=no, scrollbars=no, status=no;";    //팝업창 옵션(optoin)
-		window.open(popUrl,"",popOption);
-}
-

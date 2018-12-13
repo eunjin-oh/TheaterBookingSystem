@@ -26,20 +26,20 @@
        pstmt.setInt(1,screenid);
        pstmt.setInt(2,seatnumber);
        pstmt.setString(3,theatername);
+       pstmt.executeUpdate();     
+      
+       for(int i =0; i<seatnumber; i++){
+       String sql2 = "insert into 좌석 values(?,?,?)";
+       pstmt = conn.prepareStatement(sql2);
+       pstmt.setInt(1,i);
+       pstmt.setInt(2,screenid);
+       pstmt.setString(3,"NO");
        
        pstmt.executeUpdate();     
-       
-	for(int i=0; i<seatnumber; i++){
-       sql = "insert into 좌석 values(?,?,?,?)";
-       pstmt = conn.prepareStatement(sql);
-	
-       pstmt.setInt(1,i);
-       pstmt.setInt(2,0);
-       pstmt.setInt(3,screenid);
-       pstmt.setString(4,"NO");
-       
-       pstmt.executeUpdate();  
-	}
+      }
+
+
+       str = "상영관 테이블에 새로운 레코드를 추가했습니다.";
     }catch(Exception e) {
        e.printStackTrace();
        str = "상영관 테이블에 새로운 레코드를 추가에 실패했습니다.";

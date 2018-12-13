@@ -83,7 +83,7 @@ function carousel() {
 <div id="dSub" style="text-align:center;">
 <select name="day" class="day" id="findMovie" style="width: 10%; text-align:center; font-size:15px;">
 		<option value="reserv">예매율순</option></select>
-<center><input type="text" name="subject" placeholder="예매율순위" onkeydown="enterKey()" style="width: 60%; text-align:center; font-size:40px;"></center>
+<center><input type="text" name="subject" placeholder="영화검색" onkeydown="enterKey()" style="width: 60%; text-align:center; font-size:40px;"></center>
 </div><br>
 
 <%
@@ -124,9 +124,9 @@ try{
 %>
 						<article class="style2">
 							<span class="image">
-								<img src="./photo/<%=fileName%>" alt="" />
+								<img src="photo/<%=fileName%>" alt="" />
 							</span>
-							<a href="javascript:popupOpen(<%=movieid%>)";>
+							<a href="showInfo.jsp?movieid=<%=movieid%>&id=<%=id%>">
 								<div class="content">
 								<h2><%=moviename%></h2>
 									<p>예매율 <%=movierank%>위</p>
