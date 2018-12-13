@@ -86,28 +86,28 @@
 				int SeatRow = SeatInt/10;
 				int LeftSeat = SeatInt%10;
 				for(int i =0; i<SeatRow; i++){
-				%>
+		%>
 					<tr>				
-				<%
+		<%
 					for(int j=0; j<10;j ++){
-				%>
+		%>
 				<td><input type="checkbox" name ="seatNum" value="<%=ScreenNum+"-"+i+""+j%>"><%=ScreenNum+"-"+i+""+j%></td>
-				<%		   
+		<%		   
 					}
-				%>
+		%>
 					</tr>
-				<%
+		<%
 				}%>
 				<tr>				
-				<%
+		<%
 				for(int i =0; i<LeftSeat; i++){
-				%>
+		%>
 				 	<td><input type="checkbox" name ="seatNum" value="<%=ScreenNum+"-"+SeatRow+""+i%>"><%=ScreenNum+"-"+SeatRow+""+i%></td>
-				<%							
+		<%							
 				}
-				%>
+		%>
 					</tr>
-				<%				
+		<%				
 			}
 		}
          catch (SQLException se) {

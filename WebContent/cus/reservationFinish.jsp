@@ -21,8 +21,7 @@
  	 int ScreenNum = Integer.parseInt(request.getParameter("ScreenNum"));
  	 String MovieTime = request.getParameter("MovieTime");
  	 String[] seatNum = request.getParameterValues("seatNum");
- 	 String seatCount = request.getParameter("seatNum");
- 	 
+ 	
  	 int count =0;
  	 for(int i=0; i<seatNum.length; i++){
  		 count++;
@@ -100,11 +99,11 @@
              <tr>
             <td id="title">좌석번호</td>
            <td>
-            <%
+            <%        
             for(String seat : seatNum){            
             out.print(seat+"<br>");
             }
-            %>
+            %>        
             </td>
            </tr>            
             <tr>
@@ -115,9 +114,8 @@
           <br>
       <input type="button"  onclick="move('Movie.jsp?id=<%=id%>');" value="확인"/>                   
          </div>    
-         
-         
- <%		
+  <% String seatList = Arrays.toString(seatNum);
+ 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
@@ -130,18 +128,21 @@
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(jdbcUrl, dbId, dbPass);
 		
-		String sql = "insert into 티켓 values(?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into 티켓 values(?,?,?,?,?,?,?,?,?,?,?)";
 		pstmt = conn.prepareStatement(sql);
 		
 		pstmt.setInt(1, resNum);
 		pstmt.setString(2, id);
 		pstmt.setInt(3, movieid);
-		pstmt.setInt(4, ScreenNum);
-		pstmt.setString(5, MovieTime);	
-		pstmt.setString(6, rsvDate);	
-		pstmt.setInt(7, count);	
-		pstmt.setInt(8, count*9000);	
-		pstmt.setString(9, theatername);	
+		pstmt.setString(4, moviename);
+		pstmt.setInt(5, ScreenNum);
+		pstmt.setString(6, rsvDate);
+		pstmt.setString(7, MovieTime);	
+		pstmt.setString(8, seatList);
+		pstmt.setInt(9, count);	
+		pstmt.setInt(10, count*9000);	
+		pstmt.setString(11, theatername);	
+		
 		pstmt.executeUpdate();				
 			
 		String sql2 = "insert into 좌석 values(?,?,?,?)";

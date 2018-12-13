@@ -65,12 +65,12 @@
             <option value='9:00'>9:00</option>
             <option value='11:00'>11:00</option>            
             <option value='12:20'>12:20</option>            
-            <option value='14:10'>14:10</option>      
-            <option value='15:40'>15:40</option> 
-            <option value='17:00'>17:00</option> 
-            <option value='18:30'>18:30</option>   
-            <option value='20:00'>20:00</option>  
-            <option value='22:15'>22:15</option>   
+            <option value='1410'>14:10</option>      
+            <option value='1540'>15:40</option> 
+            <option value='1700'>17:00</option> 
+            <option value='1830'>18:30</option>   
+            <option value='2000'>20:00</option>  
+            <option value='2215'>22:15</option>   
            </select>           
            </td>
           </tr>
